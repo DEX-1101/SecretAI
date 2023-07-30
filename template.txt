@@ -1,10 +1,9 @@
 #model
-https://civitai.com/api/download/models/90854
 
 #lora
-https://huggingface.co/OedoSoldier/detail-tweaker-lora/resolve/main/add_detail.safetensors
+
+#embedding
 
 #vae
-https://huggingface.co/NoCrypt/blessed_vae/resolve/main/blessed.vae.pt
-https://huggingface.co/NoCrypt/blessed_vae/resolve/main/blessed.vae.pt
+
 
