@@ -1,1 +1,2 @@
-https://huggingface.co/x1101/models/resolve/main/0.5(any5)%20%2B%200.5(Gape60-fp16).safetensors
+https://huggingface.co/x1101/models/resolve/main/anymix_v3_half.safetensors
+https://huggingface.co/x1101/models/resolve/main/anymix_v2.ckpt
