@@ -1,2 +1,1 @@
-https://huggingface.co/x1101/models/resolve/main/anymix_v3_half.safetensors
-https://huggingface.co/x1101/models/resolve/main/anymix_v2.ckpt
+https://civitai.com/api/download/models/112609
