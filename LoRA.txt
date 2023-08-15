@@ -26,3 +26,4 @@ https://huggingface.co/x1101/LoRA/resolve/main/shizukaV2/shizukaV2.safetensors
 https://huggingface.co/x1101/LoRA/resolve/main/lyfe/lyfe.safetensors
 https://huggingface.co/x1101/LoRA/resolve/main/KafkaV3/Kafka.safetensors
 https://huggingface.co/x1101/LoRA/resolve/main/nsfwV3-faceless/nsfwV3-faceless.safetensors
+https://huggingface.co/x1101/LoRA/resolve/main/Junko/junko.safetensors
