@@ -27,3 +27,4 @@ https://huggingface.co/x1101/LoRA/resolve/main/lyfe/lyfe.safetensors
 https://huggingface.co/x1101/LoRA/resolve/main/Junko/junko.safetensors
 https://huggingface.co/x1101/LoRA/resolve/main/senjou/senjou.safetensors
 https://huggingface.co/x1101/LoRA/resolve/main/elizabeth/elizabeth.safetensors
+https://huggingface.co/x1101/LoRA/resolve/main/mc/mc.safetensors
