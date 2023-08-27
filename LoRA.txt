@@ -30,3 +30,4 @@ https://huggingface.co/x1101/LoRA/resolve/main/Liselotte/liselotte.safetensors
 https://huggingface.co/x1101/LoRA/resolve/main/mc/mc.safetensors
 https://huggingface.co/x1101/LoRA/resolve/main/morse/morse.safetensors
 https://huggingface.co/x1101/LoRA/resolve/main/ChabasiraV2/chabasira.safetensors
+https://huggingface.co/x1101/LoRA/resolve/main/ayano/ayano.safetensors
