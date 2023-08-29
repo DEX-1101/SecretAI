@@ -24,10 +24,4 @@ https://huggingface.co/x1101/LoRA/resolve/main/Sachio/Sachio.safetensors
 https://huggingface.co/x1101/LoRA/resolve/main/lyfe/lyfe.safetensors
 https://huggingface.co/x1101/LoRA/resolve/main/Junko/junko.safetensors
 https://huggingface.co/x1101/LoRA/resolve/main/senjou/senjou.safetensors
-https://huggingface.co/x1101/LoRA/resolve/main/Ayame1/ayame.safetensors
-https://huggingface.co/x1101/LoRA/resolve/main/morse/morse.safetensors
-https://huggingface.co/x1101/LoRA/resolve/main/Tokime/tokime.safetensors
-https://huggingface.co/x1101/LoRA/resolve/main/ChabasiraV2/chabasira.safetensors
-https://huggingface.co/x1101/LoRA/resolve/main/ayano/ayano.safetensors
-https://huggingface.co/x1101/LoRA/resolve/main/yuki/yuki.safetensors
-https://huggingface.co/x1101/LoRA/resolve/main/jinglui/jinglui.safetensors
+
