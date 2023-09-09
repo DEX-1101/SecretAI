@@ -32,3 +32,4 @@ https://huggingface.co/x1101/LoRA/resolve/main/ayano/ayano.safetensors
 https://huggingface.co/x1101/LoRA/resolve/main/yuki/yuki.safetensors
 https://huggingface.co/x1101/LoRA/resolve/main/yutaka/yutaka.safetensors
 https://huggingface.co/x1101/LoRA/resolve/main/Miyako/miyako.safetensors
+https://huggingface.co/x1101/LoRA/resolve/main/makise/makise.safetensors
