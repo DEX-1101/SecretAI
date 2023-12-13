@@ -38,8 +38,6 @@ common:
     # - name:
     #   url:
 sd:
-  - name : config.json
-    url : https://raw.githubusercontent.com/DEX-1101/SecretNAI/main/ui/config.json
   # this is a section for stable diffusion webui
   # "ui" folder will have this structure
   #
