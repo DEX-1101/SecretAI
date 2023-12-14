@@ -97,7 +97,18 @@ sd:
       url: https://github.com/zanllp/sd-webui-infinite-image-browsing
     - name: batchlink-downloader
       url: https://github.com/etherealxx/batchlinks-webui
-    - name: 
+    - name: adetailer
+      url: https://github.com/Bing-su/adetailer
+    - name: regional-prompt
+      url: https://github.com/hako-mikan/sd-webui-regional-prompter
+    - name: openpose
+      url: https://github.com/fkunn1326/openpose-editor
+    - name: aspect-ratio
+      url: https://github.com/alemelis/sd-webui-ar
+    - name: wd-tagger
+      url: https://github.com/picobyte/stable-diffusion-webui-wd14-tagger
+    - name: civitai-browser-plus
+      url: https://github.com/BlafKing/sd-civitai-browser-plus
   #
   # custom_download same as name url format but with dir
   #
