@@ -1,6 +1,6 @@
 {
-    "sd_model_checkpoint": "AOM3_orangemixs.safetensors [d124fc18f0]",
-    "sd_checkpoint_hash": "d124fc18f0232d7f0a2a70358cdb1288af9e1ee8596200f50f0936be59514f6d",
+    "sd_model_checkpoint": "anymixV2_half.safetensors [3600f71cbd]",
+    "sd_checkpoint_hash": "3600f71cbdf504ecc481fbf982776c52d3070238d7db64753a92a8d239b5c88b",
     "samples_save": true,
     "samples_format": "png",
     "samples_filename_pattern": "",
