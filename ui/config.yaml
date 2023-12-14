@@ -33,8 +33,12 @@ common:
     # - name:
     #   url:
   embeddings:
-    # - name:
-    #   url:
+    - name: FastNegativeV2.pt
+      url: https://civitai.com/api/download/models/94057?type=Model&format=PickleTensor
+    - name: EasyNegative.safetensors
+      url: https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.safetensors
+    - name: negative_hand-neg.pt
+      url: https://civitai.com/api/download/models/60938?type=Negative&format=Other
   hypernetwork:
     # - name:
     #   url:
@@ -109,6 +113,8 @@ sd:
       url: https://github.com/picobyte/stable-diffusion-webui-wd14-tagger
     - name: civitai-browser-plus
       url: https://github.com/BlafKing/sd-civitai-browser-plus
+    - name: tab-ext
+      url: https://github.com/Haoming02/sd-webui-tabs-extension
   #
   # custom_download same as name url format but with dir
   #
