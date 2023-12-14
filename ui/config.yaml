@@ -106,6 +106,8 @@ sd:
     # - dir:
     #   name:
     #   url:
+  config_json:
+  ui_config_json:
   #
   # env stand for Environment
   # args stand for Arguments
