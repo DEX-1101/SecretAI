@@ -87,6 +87,17 @@ sd:
   extensions:
     - name: sd-webui-controlnet
       url: https://github.com/Mikubill/sd-webui-controlnet
+    - name: colab-timer
+      url: https://github.com/DEX-1101/timer
+    - name: encrypt-img
+      url: https://github.com/DEX-1101/sd-encrypt-image
+    - name: auto-tag
+      url: https://github.com/DEX-1101/auto-tag
+    - name: infinite-image-browsing
+      url: https://github.com/zanllp/sd-webui-infinite-image-browsing
+    - name: batchlink-downloader
+      url: https://github.com/etherealxx/batchlinks-webui
+    - name: 
   #
   # custom_download same as name url format but with dir
   #
