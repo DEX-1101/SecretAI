@@ -20,8 +20,8 @@
 #
 common:
   models:
-    - name: anymixV2_half.safetensors
-      url: https://civitai.com/api/download/models/112609?type=Model&format=SafeTensor&size=pruned&fp=fp16
+    #- name: anymixV2_half.safetensors
+    #  url: https://civitai.com/api/download/models/112609?type=Model&format=SafeTensor&size=pruned&fp=fp16
   vae:
     - name: sdxl_vae.safetensors
       url: https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl_vae.safetensors
