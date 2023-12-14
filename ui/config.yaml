@@ -1,23 +1,4 @@
 
-# very BIG NOTE that i need to put here
-# this config will download everything inside a "userdata" folder
-# "userdata" folder will have another folder called "models" and "ui"
-# "models" will have your models downloaded to it
-# "ui" will have some your webui element
-# for "ui" it will be explained in the webui section
-#
-# if you don't understand how YAML BLOCK SEQUENCE work its recommended for you read some tutorial for it
-#
-# default template for most part
-# - name: (file name.safetensors / file name.pt / file name.ckpt etc)
-#   url: (file url)
-#
-# you can copy the template as many as you want for example
-# - name: model1.safetensors
-#   url: http://example.com/model1
-# - name: model2.pt
-#   url: http://example.com/model2
-#
 common:
   models:
     #- name: anymixV2_half.safetensors
@@ -45,49 +26,8 @@ common:
   controlnet:
     # - name:
     #   url:
+    
 sd:
-  # this is a section for stable diffusion webui
-  # "ui" folder will have this structure
-  #
-  # ui
-  # `-- sd
-  #     |-- extensions
-  #     |   `-- .
-  #     |-- models
-  #     |   `-- .
-  #     |-- outputs
-  #     |   `-- .
-  #     |-- scripts
-  #     |   `-- .
-  #     |-- config.json
-  #     `-- ui-config.json
-  #
-  # in case you want to add something to stable diffusion, e.g custom script
-  # put it here
-  #
-  # for models folder, only download here if its not covered in common section
-  # e.g sam model for segment anything extensions
-  # ---------------------------------------
-  #
-  # extensions use git to download
-  #
-  # git template
-  # - name: (folder name/repo name)
-  #   url: (repo url)
-  #   branch: (branch name OPTIONAL)
-  #   commit: (commit hash OPTIONAL)
-  #
-  # example
-  # - name: extension1
-  #   url: https://example.com/gituser/extension1
-  # - name: extension2
-  #   url: https://example.com/gituser/extension2
-  #   branch: dev
-  #
-  # branch and commit are optional
-  # if not present then will download the latest commit on the main branch
-  #
-  # oh yea controlnet will be installed whether you want it or not (even if you don't include it)
   extensions:
     - name: sd-webui-controlnet
       url: https://github.com/Mikubill/sd-webui-controlnet
@@ -115,40 +55,13 @@ sd:
       url: https://github.com/BlafKing/sd-civitai-browser-plus
     - name: tab-ext
       url: https://github.com/Haoming02/sd-webui-tabs-extension
-  #
-  # custom_download same as name url format but with dir
-  #
-  # example
-  # - dir: models/sam
-  #   name: sam_model.pth
-  #   url: https://example.com/sam_model.pth
-  #
-  # do remember, dir will always "ui" folder subdirectory
-  # so, with the example above it will download to ui/sd/models/sam/sam_model.pth
-  #
-  # if you happen to put absolute / full path e.g /root/somedir, it will download to a warning folder in "ui" folder
-  #
-  # this is useful when you want to download extra models but its not covered in common section
-  #
+ 
   custom_download:
     # - dir:
     #   name:
     #   url:
   config_json:
   ui_config_json:
-  #
-  # env stand for Environment
-  # args stand for Arguments
-  # both env and args are using this template
-  # - (a text)
-  #
-  # for example
-  # - EXAMPLE_ENV=examplevalue
-  # - --example-arg examplevalue
-  #
-  # please see https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings
-  # for more explain about what env and arg can be used
-  #
   env:
     # - --EXAMPLE_ENV=examplevalue
   args:
