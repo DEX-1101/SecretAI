@@ -4,3 +4,4 @@ https://huggingface.co/cagliostrolab/animagine-xl-3.0/resolve/main/animagine-xl-
 #lora
 https://huggingface.co/x1101/sdxl-model/resolve/main/lorraine/lorraine/lorraine.safetensors
 https://huggingface.co/x1101/sdxl-model/resolve/main/blackswan/blackswan/blackswan.safetensors
+https://huggingface.co/x1101/sdxl-model/resolve/main/sparkle/sparkle/sparkle.safetensors
