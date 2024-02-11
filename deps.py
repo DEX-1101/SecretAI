@@ -21,7 +21,7 @@ if __name__ == "__main__":
     # List of commands with custom messages and colors
     commands = [
         ("apt-get install lz4", "LZ4 package", Color.GREEN),
-        ("pip install -q colorama", "Colorama package", Color.RED),
+        ("pip install -q colorama", "Colorama package", Color.GREEN),
         ("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", "New Tunnel", Color.GREEN),
         ("!tar -xzf zrok_0.4.23_linux_amd64.tar.gz", "Zrok package", Color.GREEN)
     ]
