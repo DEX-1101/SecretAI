@@ -22,10 +22,10 @@ def execute_command_silently(command, message, color, success_count, failure_cou
 if __name__ == "__main__":
     # List of commands with custom messages and colors
     commands = [
-        ("!apt-get install lz4", "LZ4 package", COLOR_GREEN),
+        ("apt-get install lz4", "LZ4 package", COLOR_GREEN),
         ("pip install -q colorama", "Colorama package", COLOR_RED),
         ("!curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", "New Tunnel", COLOR_GREEN),
-        ("!tar -xzf zrok_0.4.23_linux_amd64.tar.gz", "Zrok package", COLOR_RED)
+        ("tar -xzf zrok_0.4.23_linux_amd64.tar.gz", "Zrok package", COLOR_RED)
     ]
     
     # Initialize counters
