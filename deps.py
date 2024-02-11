@@ -37,4 +37,4 @@ if __name__ == "__main__":
         total_time += command_time
     
     # Print summary
-    print(f"\nExecuted command: {success_count}, Error: {failure_count}, All completed within: {total_time:.2f} seconds")
+    print(f"\nError count: [ {failure_count} ] of [{success_count}] , All completed within: {total_time:.2f} seconds")
