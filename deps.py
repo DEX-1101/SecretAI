@@ -6,7 +6,7 @@ def execute_command(command):
     """
     try:
         # Run the command in the subprocess
-        subprocess.run(command, check=True, shell=True)
+        subprocess.run(command, check=True, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         print(f"Command '{command}' executed successfully.")
         return True, None
     except subprocess.CalledProcessError as e:
