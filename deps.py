@@ -37,6 +37,4 @@ if __name__ == "__main__":
         total_time += command_time
     
     # Print summary
-    print(f"\nTotal commands installed successfully: {success_count}")
-    print(f"Total commands failed to install: {failure_count}")
-    print(f"Total time taken: {total_time:.2f} seconds")
+    print(f"\nExecuted command: {success_count}, Error: {failure_count}, All completed within: {total_time:.2f} seconds")
