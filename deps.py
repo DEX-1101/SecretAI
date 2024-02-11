@@ -25,7 +25,7 @@ def execute_command_silently(command, message, success_count, failure_count):
 if __name__ == "__main__":
     # List of commands with custom messages
     commands = [
-        ("echo [+] Installing Requirements"),
+        ("echo + Installing Requirements"),
         ("pip install -q git+https://github.com/DEX-1101/colablib", "    Colablib..."),
         ("apt-get install lz4", "    LZ4..."),
         ("pip install -q colorama", "    Colorama..."),
