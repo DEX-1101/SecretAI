@@ -1,33 +1,31 @@
 import subprocess
 
-def execute_command(command):
+# ANSI color escape codes
+class Color:
+    GREEN = '\033[92m'
+    RED = '\033[91m'
+    RESET = '\033[0m'
+
+def execute_command_silently(command, message, color):
     """
-    Function to execute a shell command.
+    Function to execute a shell command silently.
     """
     try:
-        # Run the command in the subprocess
+        # Run the command in the subprocess silently
         subprocess.run(command, check=True, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        print(f"Command '{command}' executed successfully.")
-        return True, None
+        print(f"{color}{message} '{command}' installed successfully.{Color.RESET}")
     except subprocess.CalledProcessError as e:
-        error_message = f"Error executing command '{command}': {e}"
-        print(error_message)
-        return False, error_message
+        print(f"{Color.RED}Error installing '{command}': {e}{Color.RESET}")
 
 if __name__ == "__main__":
-    # List of commands to execute
+    # List of commands with custom messages and colors
     commands = [
-        "apt-get install lz4",
-        "pip install -q colorama",
-        "curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel",
-        "!apt -y install -qq aria2"
+        ("apt-get install lz4", "LZ4 package", Color.GREEN),
+        ("pip install -q colorama", "Colorama package", Color.RED),
+        ("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", "New Tunnel", Color.GREEN),
+        ("!tar -xzf zrok_0.4.23_linux_amd64.tar.gz", "Zrok package", Color.GREEN)
     ]
     
-    # Execute each command
-    for command in commands:
-        success, error_message = execute_command(command)
-        if success:
-            print(f"Command '{command}' was successfully installed.")
-        else:
-            print(f"Error occurred while executing command '{command}': {error_message}")
-
+    # Execute each command silently with custom messages and colors
+    for command, message, color in commands:
+        execute_command_silently(command, message, color)
