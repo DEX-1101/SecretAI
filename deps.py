@@ -1,6 +1,11 @@
 import subprocess
 import time
 
+# ANSI escape codes for text color
+COLOR_RED = "\033[91m"
+COLOR_GREEN = "\033[92m"
+COLOR_RESET = "\033[0m"
+
 def execute_command_silently(command, message, success_count, failure_count):
     """
     Function to execute a shell command silently.
@@ -9,7 +14,7 @@ def execute_command_silently(command, message, success_count, failure_count):
     try:
         # Run the command in the subprocess silently
         subprocess.run(command, check=True, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        print(f"{message} '{command}' installed successfully.")
+        print(f"{message} installed successfully.")
         success_count += 1
     except subprocess.CalledProcessError as e:
         print(f"Error installing '{command}': {e}")
@@ -20,8 +25,10 @@ def execute_command_silently(command, message, success_count, failure_count):
 if __name__ == "__main__":
     # List of commands with custom messages
     commands = [
-        ("apt-get install lz4", "LZ4 package"),
-        ("pip install -q colorama", "Colorama package"),
+        ("echo [+] Installing Requirements"
+        ("pip install -q git+https://github.com/DEX-1101/colablib", "    Colablib..."),
+        ("apt-get install lz4", "    LZ4..."),
+        ("pip install -q colorama", "    Colorama..."),
         ("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", "New Tunnel"),
         ("tar -xzf zrok_0.4.23_linux_amd64.tar.gz", "Zrok package")
     ]
