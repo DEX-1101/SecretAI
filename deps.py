@@ -25,9 +25,8 @@ def execute_command_silently(command, message, success_count, failure_count):
 if __name__ == "__main__":
     # List of commands with custom messages
     commands = [
-        ("pip install -q git+https://github.com/DEX-1101/colablib", "    Colablib..."),
-        ("apt-get install lz4", "    LZ4..."),
-        ("pip install -q colorama", "    Colorama..."),
+        ("apt-get install lz4", "     LZ4 package"),
+        ("pip install -q colorama", "      Colorama package"),
         ("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", "New Tunnel"),
         ("tar -xzf zrok_0.4.23_linux_amd64.tar.gz", "Zrok package")
     ]
