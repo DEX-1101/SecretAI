@@ -4,6 +4,7 @@ import time
 from colablib.colored_print import cprint, print_line
 cprint("[+] Installing Requirments", color="flat_yellow")
 
+is_colab = False
 branch = "master"
 root_path = "/kaggle/working"
 ui_path = os.path.join(root_path, "x1101")
@@ -48,6 +49,12 @@ if __name__ == "__main__":
         (f"find {git_path} -mindepth 1 -maxdepth 1 -type d -print -exec git -C {{}} reset --hard \;", "Updating Extensions")
         
     ]
+    
+    if is_colab:
+        commands.append(("pip install -q xformers==0.0.22.post7", "xformers"))
+        else
+        commands.append(("pip install -q xformers==0.0.20 triton==2.0.0", "xformers", "xformers"))
+        commands.append(("pip install -q torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2+cu118 torchtext==0.15.2 torchdata==0.6.1 --extra-index-url https://download.pytorch.org/whl/cu118", "torch"))
     
     # Initialize counters and total time
     success_count = 0
