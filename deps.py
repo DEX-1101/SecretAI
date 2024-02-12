@@ -16,7 +16,7 @@ def kontolondon(command, message, success_count, failure_count):
     try:
         # Run the command in the subprocess silently
         subprocess.run(command, check=True, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        cprint(f"[ {message} ] installed", color="flat_cyan")
+        cprint(f"{message}", color="flat_cyan")
         success_count += 1
     except subprocess.CalledProcessError as e:
         print(f"Error installing [ {message} ]: {e}")
@@ -35,7 +35,8 @@ if __name__ == "__main__":
         ("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", "new_tunnel"),
         ("curl -s -Lo /usr/bin/cl https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /usr/bin/cl", "cloudflare"),
         ("curl -sLO https://github.com/openziti/zrok/releases/download/v0.4.23/zrok_0.4.23_linux_amd64.tar.gz", "zork"),
-        ("tar -xzf zrok_0.4.23_linux_amd64.tar.gz", "tar zrok")
+        ("tar -xzf zrok_0.4.23_linux_amd64.tar.gz", "unpacking zork"),
+        ("mv {root_path}/zrok /usr/bin", "zork installed")
     ]
     
     # Initialize counters and total time
