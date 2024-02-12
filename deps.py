@@ -36,7 +36,7 @@ if __name__ == "__main__":
         ("curl -s -Lo /usr/bin/cl https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /usr/bin/cl", "cloudflare"),
         ("curl -sLO https://github.com/openziti/zrok/releases/download/v0.4.23/zrok_0.4.23_linux_amd64.tar.gz", "zork"),
         ("tar -xzf zrok_0.4.23_linux_amd64.tar.gz", "unpacking zork"),
-        ("mv {root_path}/zrok /usr/bin", "zork installed")
+        ("mv ~/zrok /usr/bin", "zork installed")
     ]
     
     # Initialize counters and total time
@@ -50,4 +50,4 @@ if __name__ == "__main__":
         total_time += command_time
     
     # Print summary
-    print(f"\nError count: [ {failure_count} ] of [{success_count}] , All completed within: {total_time:.2f} seconds")
+    print(f"\nError count: {failure_count} of {success_count} , All completed within: {total_time:.2f} seconds")
