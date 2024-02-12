@@ -70,4 +70,4 @@ if __name__ == "__main__":
         total_time += command_time
     
     # Print summary
-    cprint(f"\[+] {failure_count} of {success_count} error found. All completed within: {total_time_minutes:.2f} mins", color="flat_green")
+    cprint(f"[+] {failure_count} of {success_count} error found. All completed within: {total_time_minutes:.2f} mins", color="flat_yellow")
