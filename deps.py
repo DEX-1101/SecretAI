@@ -44,7 +44,7 @@ if __name__ == "__main__":
     total_time = 0
     
     # Execute each command silently with custom messages
-    for command, message in commands1 + commands2:  # Combine all commands
+    for command, message in commands + commands2:  # Combine all commands
         success_count, failure_count, command_time = kontolondon(command, message, success_count, failure_count)
         total_time += command_time
     
