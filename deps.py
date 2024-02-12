@@ -2,11 +2,6 @@ import subprocess
 import time
 from colablib.colored_print import cprint, print_line
 
-# ANSI escape codes for text color
-COLOR_RED = "\033[91m"
-COLOR_GREEN = "\033[92m"
-COLOR_RESET = "\033[0m"
-
 def kontolondon(command, message, success_count, failure_count):
     """
     Function to execute a shell command silently.
