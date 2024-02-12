@@ -3,7 +3,7 @@ import time
 from colablib.colored_print import cprint, print_line
 cprint("[+] Installing Requirments", color="flat_yellow")
 
-root_path = "/kaggle/working"
+#root_path = "/kaggle/working"
 
 def kontolondon(command, message, success_count, failure_count):
     """
