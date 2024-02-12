@@ -12,11 +12,11 @@ def kontolondon(command, message, success_count, failure_count):
     Function to execute a shell command silently.
     """
     start_time = time.time()
-    #print(f"{message}...")
+    print(f"installing {message}")
     try:
         # Run the command in the subprocess silently
         subprocess.run(command, check=True, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        cprint(f"{message}", color="flat_cyan")
+        #cprint(f"{message}", color="flat_cyan")
         success_count += 1
     except subprocess.CalledProcessError as e:
         print(f"Error installing [ {message} ]: {e}")
@@ -49,4 +49,4 @@ if __name__ == "__main__":
         total_time += command_time
     
     # Print summary
-    print(f"\nError count: {failure_count} of {success_count} , All completed within: {total_time:.2f} seconds")
+    print(f"\n{failure_count} of {success_count} error found. All completed within: {total_time:.2f} secs")
