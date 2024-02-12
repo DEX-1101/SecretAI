@@ -11,7 +11,7 @@ def kontolondon(command, message, success_count, failure_count):
     Function to execute a shell command silently.
     """
     start_time = time.time()
-    print(f"{message}...")
+    #print(f"{message}...")
     try:
         # Run the command in the subprocess silently
         subprocess.run(command, check=True, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -26,6 +26,8 @@ def kontolondon(command, message, success_count, failure_count):
 if __name__ == "__main__":
     # List of commands with custom messages
     commands = [
+        
+        ("apt -y install -qq aria2", "aria2"),
         ("apt-get install lz4", "lz4"),
         ("pip install -q colorama", "colorama"),
         ("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", "new_tunnel"),
