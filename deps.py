@@ -5,7 +5,7 @@ from colablib.colored_print import cprint, print_line
 cprint("[+] Installing Requirments", color="flat_yellow")
 
 root_path = "/kaggle/working"
-ui_path = "/kaggle/working/1101"
+ui_path = os.path.join(root_path, "x1101")
 git_dir = os.path.join(ui_path, "extensions")
 
 def kontolondon(command, message, success_count, failure_count):
@@ -22,7 +22,6 @@ def kontolondon(command, message, success_count, failure_count):
         success_count += 1
     except subprocess.CalledProcessError as e:
         print(f"Error at [{message}]: {e}")
-        print(result.stderr)
         failure_count += 1
     end_time = time.time()
     return success_count, failure_count, end_time - start_time
