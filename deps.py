@@ -34,7 +34,8 @@ if __name__ == "__main__":
         ("npm install -g localtunnel", "localtunnel"),
         ("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", "new_tunnel"),
         ("curl -s -Lo /usr/bin/cl https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /usr/bin/cl", "cloudflare"),
-        ("curl -s -Lo /usr/bin https://huggingface.co/x1101/UI/resolve/main/zrok", "zork")
+        ("curl -sLO https://github.com/openziti/zrok/releases/download/v0.4.23/zrok_0.4.23_linux_amd64.tar.gz", "zork"),
+        ("tar -xzf zrok_0.4.23_linux_amd64.tar.gz", "tar zrok")
     ]
     
     # Initialize counters and total time
