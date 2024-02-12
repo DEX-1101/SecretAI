@@ -1,5 +1,5 @@
-pastebin_url = "https://pastebin.com/mr0v09pG"
-hf_token = "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" #if use private repo
+pastebin_url = "{pastebin_url}"
+hf_token = "{hf_token}" #if use private repo
 
 #Code by Bang Furqanil
 import os
