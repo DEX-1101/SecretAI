@@ -21,7 +21,8 @@ def kontolondon(command, message, success_count, failure_count):
         #cprint(f"{message}", color="flat_cyan")
         success_count += 1
     except subprocess.CalledProcessError as e:
-        print(f"Error installing [ {message} ]: {e}")
+        print(f"Error at [{message}]: {e}")
+        print(result.stderr)
         failure_count += 1
     end_time = time.time()
     return success_count, failure_count, end_time - start_time
