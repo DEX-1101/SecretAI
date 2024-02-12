@@ -55,7 +55,7 @@ if __name__ == "__main__":
     if is_colab:
         commands3.append(("pip install -q xformers==0.0.22.post7", "xformers"))
     else:
-        commands3.append(("pip install -q xformers==0.0.20 triton==2.0.0", "xformers", "xformers"))
+        commands3.append(("pip install -q xformers==0.0.20 triton==2.0.0", "xformers"))
         #commands3.append(("pip install -q torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2+cu118 torchtext==0.15.2 torchdata==0.6.1 --extra-index-url https://download.pytorch.org/whl/cu118", "torch"))
     
     # Initialize counters and total time
