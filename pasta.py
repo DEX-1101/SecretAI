@@ -1,9 +1,6 @@
 pastebin_url = "https://pastebin.com/mr0v09pG"
 hf_token = "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" #if use private repo
 
-root_path = "/kaggle/working"
-webui_path = os.path.join(root_path, "x1101")
-
 #Code by Bang Furqanil
 import os
 import time
@@ -14,6 +11,9 @@ from colablib.sd_models.downloader import aria2_download, download
 from colablib.colored_print import cprint, print_line
 from colablib.utils.config_utils import read_config
 from colablib.utils.git_utils import clone_repo
+
+root_path = "/kaggle/working"
+webui_path = os.path.join(root_path, "x1101")
 
 custom_model_url        = ""
 custom_vae_url          = ""
