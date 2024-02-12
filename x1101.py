@@ -65,9 +65,8 @@ if __name__ == "__main__":
     
     # Execute each command silently with custom messages
     for command, message in commands + commands2 + commands3:  # Combine all commands
-        total_time_minutes = total_time / 60
         success_count, failure_count, command_time = kontolondon(command, message, success_count, failure_count)
         total_time += command_time
     
     # Print summary
-    cprint(f"[+] {failure_count} of {success_count} error found. All completed within: {total_time_minutes:.2f} mins", color="flat_yellow")
+    cprint(f"[+] {failure_count} of {success_count} error found. All completed within: {total_time:.2f} secs", color="flat_yellow")
