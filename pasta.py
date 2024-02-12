@@ -1,6 +1,8 @@
 pastebin_url = "https://pastebin.com/mr0v09pG"
 hf_token = "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" #if use private repo
-#=================================================
+
+root_path = "/kaggle/working"
+webui_path = os.path.join(root_path, "x1101")
 
 #Code by Bang Furqanil
 import os
