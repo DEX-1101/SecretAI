@@ -39,13 +39,17 @@ if __name__ == "__main__":
     
     ]
     
+    commands2 = [
+        ("aria2c --console-log-level=error -q -c -x 16 -s 16 -k 1M https://huggingface.co/x1101/UI/resolve/main/ui.tar.lz4 -o ui.tar.lz4", "download repo"),
+    ]
+    
     # Initialize counters and total time
     success_count = 0
     failure_count = 0
     total_time = 0
     
     # Execute each command silently with custom messages
-    for command, message in commands:
+    for command, message in commands1 + commands2:  # Combine all commands
         success_count, failure_count, command_time = kontolondon(command, message, success_count, failure_count)
         total_time += command_time
     
