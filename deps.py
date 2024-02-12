@@ -1,6 +1,7 @@
 import subprocess
 import time
 from colablib.colored_print import cprint, print_line
+cprint("[+] Installing Requirments", color="flat_yellow")
 
 root_path = "/kaggle/working"
 
@@ -35,7 +36,6 @@ if __name__ == "__main__":
         ("wget -q https://github.com/gutris1/segsmaker/raw/main/kaggle/script/pantat88.py -O {root_path}/semvak_zeus.py", "semvak_zeus"
     ]
 
-    cprint("[+] Installing Requirments", color="flat_yellow")
     commands2 = [
         ("aria2c --console-log-level=error -q -c -x 16 -s 16 -k 1M https://huggingface.co/x1101/UI/resolve/main/ui.tar.lz4 -o ui.tar.lz4", "download repo"),
     ]
