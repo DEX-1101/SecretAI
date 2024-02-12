@@ -11,6 +11,7 @@ def execute_command_silently(command, message, success_count, failure_count):
     Function to execute a shell command silently.
     """
     start_time = time.time()
+    print(f"Installing {message}...")
     try:
         # Run the command in the subprocess silently
         subprocess.run(command, check=True, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
