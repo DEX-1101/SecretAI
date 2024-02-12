@@ -5,7 +5,7 @@ from colablib.colored_print import cprint, print_line
 cprint("[+] Installing Requirments", color="flat_yellow")
 
 root_path = "/kaggle/working"
-ui_path = os.path.join(root_path, "x1101")
+ui_path = "/kaggle/working/1101"
 
 def kontolondon(command, message, success_count, failure_count):
     """
