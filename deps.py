@@ -7,7 +7,7 @@ def kontolondon(command, message, success_count, failure_count):
     Function to execute a shell command silently.
     """
     start_time = time.time()
-    cprint("[+] Installing Requirments", color="flat_yellow) 
+    cprint("[+] Installing Requirments", color="flat_yellow") 
     cprint(f"    > {message}", color="flat_cyan")
     try:
         # Run the command in the subprocess silently
