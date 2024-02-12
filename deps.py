@@ -25,7 +25,7 @@ def execute_command_silently(command, message, success_count, failure_count):
 if __name__ == "__main__":
     # List of commands with custom messages
     commands = [
-        ("echo", "Installing Requirements"),
+        ("print("req")", "Installing Requirements"),
         ("apt-get install lz4", "     LZ4 package"),
         ("pip install -q colorama", "      Colorama package"),
         ("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", "New Tunnel"),
