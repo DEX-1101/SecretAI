@@ -37,7 +37,9 @@ if __name__ == "__main__":
     ]
 
     commands2 = [
-        (f"aria2c --console-log-level=error -q -c -x 16 -s 16 -k 1M https://huggingface.co/x1101/UI/resolve/main/ui.tar.lz4 -o ui.tar.lz4 && tar -xI lz4 -f ui.tar.lz4 && mv {root_path}/kaggle/working/x1101 {root_path} && rm {root_path}/ui.tar.lz4 && rm -rf {root_path}/kaggle", "Downloading repo"),
+        (f"wget -q https://raw.githubusercontent.com/DEX-1101/SecretNAI/main/template.txt -O {root_path}/download_list.txt", "download_list.txt"),
+        (f"aria2c --console-log-level=error -q -c -x 16 -s 16 -k 1M https://huggingface.co/x1101/UI/resolve/main/ui.tar.lz4 -o ui.tar.lz4 && tar -xI lz4 -f ui.tar.lz4 && mv {root_path}/kaggle/working/x1101 {root_path} && rm {root_path}/ui.tar.lz4 && rm -rf {root_path}/kaggle", "Downloading repo")
+        
     ]
     
     # Initialize counters and total time
