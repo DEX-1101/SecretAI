@@ -32,7 +32,7 @@ if __name__ == "__main__":
         ("npm install -g localtunnel", "localtunnel"),
         ("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", "new_tunnel"),
         ("curl -s -Lo /usr/bin/cl https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /usr/bin/cl", "cloudflare"),
-        ("curl -sLO https://github.com/openziti/zrok/releases/download/v0.4.23/zrok_0.4.23_linux_amd64.tar.gz && tar -xzf zrok_0.4.23_linux_amd64.tar.gz && rm -rf zrok_0.4.23_linux_amd64.tar.gz && mv /kaggle/working/zrok /usr/bin", "zrok"),
+        (f"curl -sLO https://github.com/openziti/zrok/releases/download/v0.4.23/zrok_0.4.23_linux_amd64.tar.gz && tar -xzf zrok_0.4.23_linux_amd64.tar.gz && rm -rf zrok_0.4.23_linux_amd64.tar.gz && mv {root_path}/zrok /usr/bin", "zrok"),
         (f"wget -q https://github.com/gutris1/segsmaker/raw/main/kaggle/script/pantat88.py -O {root_path}/semvak_zeus.py", "semvak_zeus")
     ]
 
