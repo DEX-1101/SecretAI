@@ -16,8 +16,8 @@ def kontolondon(command, message, success_count, failure_count):
     cprint(f"    > {message}", color="flat_cyan")
     try:
         # Run the command in the subprocess silently
-        #subprocess.run(command, check=True, shell=True)
-        subprocess.run(command, check=True, shell=True, text=True,  stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(command, check=True, shell=True,  stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        #subprocess.run(command, check=True, shell=True, text=True,  stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         #cprint(f"{message}", color="flat_cyan")
         success_count += 1
     except subprocess.CalledProcessError as e:
