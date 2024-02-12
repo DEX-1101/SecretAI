@@ -16,7 +16,7 @@ def kontolondon(command, message, success_count, failure_count):
     try:
         # Run the command in the subprocess silently
         subprocess.run(command, check=True, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        cprint(f"{message} installed.", color="flat_cyan")
+        cprint(f"{message}", color="flat_cyan" + "installed.")
         success_count += 1
     except subprocess.CalledProcessError as e:
         print(f"Error installing '{message}': {e}")
