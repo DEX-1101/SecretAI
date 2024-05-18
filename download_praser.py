@@ -32,7 +32,7 @@ else:
      cprint('Error. Enviroment not detected', color="flat_red")
 
 print_line(0)
-cprint(f"[+] PyTorch Version :", torch_ver, "| Cuda :", cuda_ver, "| GPU Access :", is_gpu, "| Env :", env, color="flat_green")
+cprint(f"[+] PyTorch Version :", torch_ver, "| Cuda :", cuda_ver, "| GPU Access :", is_gpu, "| Env :", env, color="flat_yellow")
 print_line(0)
 cprint("[+] Preparing Notebook...", color="flat_yellow")
 
@@ -112,7 +112,8 @@ def custom_download(custom_dirs):
 
         if value.url:
             print_line(0, color="green")
-            cprint(f" [+] Downloading {key}.", color="flat_yellow")
+            #cprint(f" [+] Downloading {key}.", color="flat_yellow")
+            cprint(f" [+] Downloading {key}.")
 
         for url in urls:
             url = url.strip()  # Remove leading/trailing whitespaces from each URL
