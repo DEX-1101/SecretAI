@@ -41,7 +41,7 @@ class CustomDirs(BaseModel):
 
 #user_header = f"Authorization: Bearer {hf_token}"
 #use_header = headers['Authorization'] = 'Bearer hf_token'
-use_headers = {'Authorization': 'Bearer hf_token'}
+use_header = {'Authorization': 'Bearer hf_token'}
 
 custom_dirs = {
     "model"       : CustomDirs(url=custom_model_url, dst=models_dir),
