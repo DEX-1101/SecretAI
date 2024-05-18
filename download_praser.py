@@ -21,7 +21,7 @@ from colorama import init, Fore, Back, Style
 
 torch_ver = torch.__version__
 cuda_ver = torch.version.cuda
-is_gpu = "Yes." if torch.cuda.is_available() else "GPU not detected."
+gpu_name = torch.cuda.get_device_name(torch.cuda.current_device())
 
 if 'content' in os.listdir('/'):
     root_path = "/content"
@@ -35,7 +35,7 @@ else:
      cprint('Error. Enviroment not detected', color="flat_red")
 
 print_line(0)
-cprint(f"[+] PyTorch Version :", torch_ver, "| Cuda :", cuda_ver, "| GPU Access :", is_gpu, "| Env :", env, "|", color="flat_green")
+cprint(f"[+] PyTorch Version :", torch_ver, "| Cuda :", cuda_ver, "| GPU :", gpu_name, "| Env :", env, "|", color="flat_green")
 print_line(0)
 cprint("[+] Preparing Notebook", color="flat_yellow")
 
@@ -48,8 +48,8 @@ def kontolondon(oppai, asu, si_kontol, kntl, debug=True):
     start_time = time.time() 
     cprint(f"    > {asu}", color="flat_cyan")
     try:
-        subprocess.run(oppai, check=True, shell=True, text=True)  # for debug
-        #subprocess.run(oppai, check=True, shell=True, text=True,  stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        #subprocess.run(oppai, check=True, shell=True, text=True)  # for debug
+        subprocess.run(oppai, check=True, shell=True, text=True,  stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         si_kontol += 1
     except subprocess.CalledProcessError as e:
         print(f"Error at [{asu}]: {e}")
@@ -315,8 +315,8 @@ if __name__ == "__main__":
     with tunnel:
         #subprocess.run("python -m http.server 1101", shell=True)
         #os.chdir(ui)
-        #subprocess.run(f"echo -n {start_colab} >{ui}/x1101/static/colabTimer.txt", shell=True)
-        #lol = f"sed -i -e \"s/\\[\\\"sd_model_checkpoint\\\"\\]/\\[\\\"sd_model_checkpoint\\\",\\\"sd_vae\\\",\\\"CLIP_stop_at_last_layers\\\"\\]/g\" {ui}/x1101/modules/shared_options.py"
-        #subprocess.run(lol, shell=True)       
+        subprocess.run(f"echo -n {start_colab} >{ui}/x1101/static/colabTimer.txt", shell=True)
+        lol = f"sed -i -e \"s/\\[\\\"sd_model_checkpoint\\\"\\]/\\[\\\"sd_model_checkpoint\\\",\\\"sd_vae\\\",\\\"CLIP_stop_at_last_layers\\\"\\]/g\" {ui}/x1101/modules/shared_options.py"
+        subprocess.run(lol, shell=True)       
         subprocess.run(f"cd {ui}/x1101 && python launch.py --port=1101 --ngrok {ngrok_token} --api --encrypt-pass= --xformers --theme dark --enable-insecure-extension-access --disable-console-progressbars --disable-safe-unpickle --no-half-vae", shell=True)
         
