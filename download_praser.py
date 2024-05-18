@@ -1,16 +1,7 @@
 import os
 import subprocess
 from IPython.display import clear_output
-
-sd_setup = widgets.Output()
-def function:
-     with sd_setup:
-              print("asu")
-              sd_setup.clear_output()
-function()
-
-kontlee = "Loading program..." 
-print(kontlee)
+print(Loading program...)
 subprocess.run("pip install -q git+https://github.com/DEX-1101/colablib", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 subprocess.run("apt -y install -qq aria2", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 import argparse
