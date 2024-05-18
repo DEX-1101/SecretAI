@@ -221,7 +221,7 @@ public_ipv4 = get_public_ip(version='ipv4')
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Ada indo coy !!!.")
-    parser.add_argument("--req", type=str, required=True, help="Required file for notebook to run.")
+    parser.add_argument("--req", type=str, help="Required file for notebook to run.")
     parser.add_argument("--config", type=str, help="The URL of your WebUI's config file if you want to import it.")
     parser.add_argument("--pastebin", type=str, help="Pastebin URL if you want to download model/lora/extensions.")
     parser.add_argument("--hf_token", type=str, help="HuggingFace's Token if you download it from private repo for Pastebin download.")
