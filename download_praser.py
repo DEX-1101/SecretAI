@@ -20,14 +20,27 @@ def download_file(url, save_dir='.'):
     print(f"Downloaded file saved as {local_filename}")
     return local_filename
 
+def download_from_link_file(link_file_path):
+    with open(link_file_path, 'r') as file:
+        urls = file.readlines()
+    
+    for url in urls:
+        url = url.strip()
+        if url:  # Skip any blank lines
+            download_file(url)
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Download files from URLs.")
-    parser.add_argument("--url", type=str, required=True, help="The URL of the file to download.")
+    parser.add_argument("--url", type=str, required=True, help="The URL of the link file to download.")
     parser.add_argument("--config", type=str, help="The URL of the config file to download.")
     
     args = parser.parse_args()
     
-    download_file(args.url)
+    # Step 1: Download the link file
+    link_file_path = download_file(args.url)
+    
+    # Step 2: Download files listed in the link file
+    download_from_link_file(link_file_path)
     
     if args.config:
         config_save_dir = '/kaggle/working/config'
