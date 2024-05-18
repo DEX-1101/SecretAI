@@ -314,5 +314,5 @@ if __name__ == "__main__":
         #subprocess.run(f"echo -n {start_colab} >{ui}/x1101/static/colabTimer.txt", shell=True)
         #lol = f"sed -i -e \"s/\\[\\\"sd_model_checkpoint\\\"\\]/\\[\\\"sd_model_checkpoint\\\",\\\"sd_vae\\\",\\\"CLIP_stop_at_last_layers\\\"\\]/g\" {ui}/x1101/modules/shared_options.py"
         #subprocess.run(lol, shell=True)       
-        subprocess.run("cd {ui}/x1101 && python launch.py --port=1101 --ngrok --api --encrypt-pass= --xformers --theme dark --enable-insecure-extension-access --disable-console-progressbars --disable-safe-unpickle --no-half-vae", shell=True)
+        subprocess.run(f"cd {ui}/x1101 && python launch.py --port=1101 --ngrok --api --encrypt-pass= --xformers --theme dark --enable-insecure-extension-access --disable-console-progressbars --disable-safe-unpickle --no-half-vae", shell=True)
         
