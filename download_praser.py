@@ -38,7 +38,9 @@ download_list       = os.path.join(root_path, "download_list.txt")
 class CustomDirs(BaseModel):
     url: str
     dst: str
-user_header = f"Authorization: Bearer hf_token"
+    
+hf_token = args.hftoken
+user_header = f"Authorization: Bearer {hf_token}"
 custom_dirs = {
     "model"       : CustomDirs(url=custom_model_url, dst=models_dir),
     "vae"         : CustomDirs(url=custom_vae_url, dst=vaes_dir),
@@ -170,7 +172,7 @@ if __name__ == "__main__":
 
     # Assign variable
     pastebin_url = args.pastebin
-    hf_token     = args.hftoken
+    hf_token = args.hftoken
     
     # Step 1: Download the link file
     download_file_with_aria2(args.url)
