@@ -1,11 +1,10 @@
 hf_token = ""
 
 import os
-import argparse
-import os
 import subprocess
-# Suppress all output
 subprocess.run("pip install -q git+https://github.com/DEX-1101/colablib", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+subprocess.run("apt -y install -qq aria2", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+import argparse
 import time
 from colablib.utils import py_utils
 from pydantic import BaseModel
@@ -14,9 +13,6 @@ from colablib.sd_models.downloader import aria2_download, download
 from colablib.colored_print import cprint, print_line
 from colablib.utils.config_utils import read_config
 from colablib.utils.git_utils import clone_repo
-
-
-
 
 #============custom
 if 'content' in os.listdir('/'):
