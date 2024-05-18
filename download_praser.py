@@ -21,7 +21,9 @@ from colorama import init, Fore, Back, Style
 
 torch_ver = torch.__version__
 cuda_ver = torch.version.cuda
-gpu_name = torch.cuda.get_device_name(torch.cuda.current_device())
+gpu_status = f"GPU Name: {torch.cuda.get_device_name(torch.cuda.current_device())}" if torch.cuda.is_available() else "No GPU detected."
+
+    
 
 if 'content' in os.listdir('/'):
     root_path = "/content"
@@ -35,7 +37,7 @@ else:
      cprint('Error. Enviroment not detected', color="flat_red")
 
 print_line(0)
-cprint(f"[+] PyTorch Version :", torch_ver, "| Cuda :", cuda_ver, "| GPU :", gpu_name, "| Env :", env, "|", color="flat_green")
+cprint(f"[+] PyTorch Version :", torch_ver, "| Cuda :", cuda_ver, "| GPU :", gpu_status, "| Env :", env, "|", color="flat_green")
 print_line(0)
 cprint("[+] Preparing Notebook", color="flat_yellow")
 
@@ -229,6 +231,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Assign variable
+    args.req = "https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/req.txt"
     pastebin_url     = args.pastebin
     hf_token         = args.hf_token
     zrok_token       = args.zrok_token
