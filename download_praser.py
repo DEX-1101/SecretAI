@@ -111,7 +111,7 @@ def custom_download(custom_dirs):
 
         if value.url:
             print_line(0, color="green")
-            cprint(f" [+] Downloading {key}.", color="flat_yellow")
+            cprint(f"[+] Downloading {key}.", color="flat_yellow")
 
         for url in urls:
             url = url.strip()  # Remove leading/trailing whitespaces from each URL
