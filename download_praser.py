@@ -33,10 +33,11 @@ lora_dir            = os.path.join(webui_path, "models", "Lora")
 embeddings_dir      = os.path.join(webui_path, "embeddings")
 extensions_dir      = os.path.join(webui_path, "extensions")
 download_list       = os.path.join(root_path, "download_list.txt")
+
 class CustomDirs(BaseModel):
     url: str
     dst: str
-user_header = f"Authorization: Bearer {hf_token}"
+user_header = f"Authorization: Bearer hf_token"
 custom_dirs = {
     "model"       : CustomDirs(url=custom_model_url, dst=models_dir),
     "vae"         : CustomDirs(url=custom_vae_url, dst=vaes_dir),
@@ -66,7 +67,7 @@ def parse_urls(filename):
 def get_filename(url, token=None):
     headers = {}
     if token:
-        headers['Authorization'] = f'Bearer {hf_token}'
+        headers['Authorization'] = 'Bearer hf_token'
        
 def custom_download(custom_dirs):
     for key, value in custom_dirs.items():
