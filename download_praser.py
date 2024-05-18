@@ -18,17 +18,7 @@ def download_file_with_aria2(url, save_dir='.'):
     # Start the aria2c process
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     
-    # Use stderr to get the download progress
-    while True:
-        output = process.stderr.readline().decode()
-        if process.poll() is not None:
-            break
-        if "Total Length:" in output:
-            total_length = int(output.split()[-2])
-        elif "DL:" in output and "%" in output:
-            percent_complete = float(output.split('%')[0].split()[-1])
-            download_size = total_length * percent_complete / 100
-            print(f"Downloading {url} - Progress: {percent_complete:.2f}% ({download_size:.2f} bytes)")
+    print(f"Downloading {url}...")
     
     process.wait()  # Ensure the process has completed
     
