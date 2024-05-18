@@ -69,10 +69,6 @@ class CustomDirs(BaseModel):
     url: str
     dst: str
 
-#user_header = f"Authorization: Bearer {hf_token}"
-#user_header = headers['Authorization'] = 'Bearer hf_token'
-#user_header = {'Authorization': f'Bearer {hf_token}'}
-
 custom_dirs = {
     "model"       : CustomDirs(url=custom_model_url, dst=models_dir),
     "vae"         : CustomDirs(url=custom_vae_url, dst=vaes_dir),
@@ -174,9 +170,7 @@ def download_file_with_aria2(url, save_dir='.'):
     
     # Start the aria2c process
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    
     print(f"Downloading {url}...")
-    
     process.wait()  # Ensure the process has completed
     
     if process.returncode == 0:
@@ -194,11 +188,11 @@ def download_from_link_file(link_file_path):
             download_file_with_aria2(url)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Download files from URLs.")
-    parser.add_argument("--url", type=str, required=True, help="The URL of the link file to download.")
-    parser.add_argument("--config", type=str, help="The URL of the config file to download.")
-    parser.add_argument("--pastebin", type=str, help="The URL of the pastebin.")
-    parser.add_argument("--hf_token", type=str, help="HuggingFace's Token if you download it from private repo for pastebin download.")
+    parser = argparse.ArgumentParser(description="Ada indo coy !!!.")
+    parser.add_argument("--req", type=str, required=True, help="Required file for notebook to run.")
+    parser.add_argument("--config", type=str, help="The URL of your WebUI's config file if you want to import it.")
+    parser.add_argument("--pastebin", type=str, help="Pastebin URL if you want to download model/lora/extensions.")
+    parser.add_argument("--hf_token", type=str, help="HuggingFace's Token if you download it from private repo for Pastebin download.")
     
     args = parser.parse_args()
 
@@ -206,11 +200,10 @@ if __name__ == "__main__":
     pastebin_url = args.pastebin
     hf_token = args.hf_token
     
-    # Step 1: Download the link file
+    # Download the link file
     download_file_with_aria2(args.url)
     link_file_path = os.path.join('.', args.url.split('/')[-1])
-    
-    # Step 2: Download files listed in the link file
+    # Download files listed in the link file
     download_from_link_file(link_file_path)
     
     if args.config:
@@ -224,7 +217,7 @@ if __name__ == "__main__":
     print_line(0)
     
     rudi = [
-        ("apt-get update && apt -y install aria2", "aria2"),
+        ("apt-get update", "Updating library..."),
         ("apt-get install lz4", "lz4"),
         ("pip install colorama", "colorama"),
         ("npm install -g localtunnel", "localtunnel"),
@@ -238,7 +231,7 @@ if __name__ == "__main__":
         (f"wget https://raw.githubusercontent.com/DEX-1101/SecretNAI/main/template.txt -O {ui}/download_list.txt", "download_list.txt"),
         (f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/x1101/UI/resolve/main/ui.tar.lz4 -o ui.tar.lz4 && tar -xI lz4 -f ui.tar.lz4 && mv {ui}/kaggle/working/x1101 {ui} && rm {ui}/ui.tar.lz4 && rm -rf {ui}/kaggle", "Installing UI..."),
         (f"cd {ui_path} && git reset --hard && git pull && git switch {branch} && git pull && git reset --hard", "Updating UI..."),
-        (f"rm -rf {git_path}/* && cd {git_path} && git clone https://github.com/BlafKing/sd-civitai-browser-plus && git clone https://github.com/Mikubill/sd-webui-controlnet && git clone https://github.com/DominikDoom/a1111-sd-webui-tagcomplete && git clone https://github.com/DEX-1101/sd-encrypt-image && git clone https://github.com/DEX-1101/timer && git clone https://github.com/gutris1/sd-hub && git clone https://github.com/Bing-su/adetailer.git && git clone https://github.com/zanllp/sd-webui-infinite-image-browsing && git clone https://github.com/thomasasfk/sd-webui-aspect-ratio-helper && git clone https://github.com/hako-mikan/sd-webui-regional-prompter && git clone https://github.com/picobyte/stable-diffusion-webui-wd14-tagger && git clone https://github.com/Coyote-A/ultimate-upscale-for-automatic1111 && git clone https://github.com/Haoming02/sd-webui-tabs-extension", "Installing Extensions..."),
+        (f"rm -rf {git_path}/* && cd {git_path} && git clone https://github.com/BlafKing/sd-civitai-browser-plus && git clone https://github.com/Mikubill/sd-webui-controlnet && git clone https://github.com/DominikDoom/a1111-sd-webui-tagcomplete && git clone https://github.com/DEX-1101/sd-encrypt-image && git clone https://github.com/DEX-1101/timer && git clone https://github.com/gutris1/sd-hub && git clone https://github.com/Bing-su/adetailer.git && git clone https://github.com/zanllp/sd-webui-infinite-image-browsing && git clone https://github.com/thomasasfk/sd-webui-aspect-ratio-helper && git clone https://github.com/hako-mikan/sd-webui-regional-prompter && git clone https://github.com/picobyte/stable-diffusion-webui-wd14-tagger && git clone https://github.com/Coyote-A/ultimate-upscale-for-automatic1111 && git clone https://github.com/Haoming02/sd-webui-tabs-extension", "Cloning Extensions..."),
         
     ]
 
