@@ -1,7 +1,6 @@
 import argparse
 import os
 import subprocess
-from tqdm import tqdm
 
 def download_file_with_aria2(url, save_dir='.'):
     local_filename = os.path.join(save_dir, url.split('/')[-1])
@@ -19,18 +18,14 @@ def download_file_with_aria2(url, save_dir='.'):
     # Start the aria2c process
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     
-    # Use tqdm to show a progress bar
-    with tqdm(total=100, unit='%') as pbar:
-        while True:
-            output = process.stderr.readline().decode()
-            if process.poll() is not None:
-                break
-            if output:
-                # Extract the percentage complete from the output
-                if "DL:" in output and "%" in output:
-                    percent_complete = float(output.split('%')[0].split()[-1])
-                    pbar.n = percent_complete
-                    pbar.refresh()
+    # Use stdout to get the download size
+    while True:
+        output = process.stderr.readline().decode()
+        if process.poll() is not None:
+            break
+        if "Total Length:" in output:
+            download_size = output.split()[-2]
+            print(f"Downloading {url} - Size: {download_size}")
     
     process.wait()  # Ensure the process has completed
     
