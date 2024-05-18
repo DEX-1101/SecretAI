@@ -219,20 +219,8 @@ if __name__ == "__main__":
         if not os.path.exists(config_save_dir):
             os.makedirs(config_save_dir)
         download_file_with_aria2(args.config, config_save_dir)
-    
-    if args.pastebin:
-        start_time    = time.time()
-        textfile_path = download_list
-        if pastebin_url:
-            user_header = f"Authorization: Bearer {hf_token}"
-            textfile_path = custom_download_list(pastebin_url)
-        download_from_textfile(textfile_path)
-        custom_download(custom_dirs)
 
-        elapsed_time  = py_utils.calculate_elapsed_time(start_time)
-        print_line(0, color="green")
-        cprint(f"[+] Download completed within {elapsed_time}.", color="flat_yellow")
-
+    ############### UI ####################
     cprint(f"[+] PyTorch Version :", torch_ver, "| Cuda :", cuda_ver, "| GPU Access :", is_gpu, color="flat_green")
     print_line(0)
     
@@ -276,3 +264,16 @@ if __name__ == "__main__":
         
     print_line(0)
     cprint(f"[+] {kntl} of {si_kontol} error found. All completed within: {total_time:.2f} secs", color="flat_yellow")
+
+    if args.pastebin:
+        start_time    = time.time()
+        textfile_path = download_list
+        if pastebin_url:
+            user_header = f"Authorization: Bearer {hf_token}"
+            textfile_path = custom_download_list(pastebin_url)
+        download_from_textfile(textfile_path)
+        custom_download(custom_dirs)
+
+        elapsed_time  = py_utils.calculate_elapsed_time(start_time)
+        print_line(0, color="green")
+        cprint(f"[+] Download completed within {elapsed_time}.", color="flat_yellow")
