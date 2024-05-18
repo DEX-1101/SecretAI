@@ -1,5 +1,3 @@
-hf_token = ""
-
 import os
 import subprocess
 subprocess.run("pip install -q git+https://github.com/DEX-1101/colablib", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -14,7 +12,7 @@ from colablib.colored_print import cprint, print_line
 from colablib.utils.config_utils import read_config
 from colablib.utils.git_utils import clone_repo
 
-#============custom
+########## PASTEBIN DL #################
 if 'content' in os.listdir('/'):
     root_path = "/content"
 elif 'kaggle' in os.listdir('/'):
@@ -123,8 +121,7 @@ def custom_download_list(url):
     download(url=url, filename=filename, user_header=user_header, dst=root_path, quiet=True)
     return filepath
     
-##########custom
-
+########## PASTEBIN DL #################
 
 def download_file_with_aria2(url, save_dir='.'):
     local_filename = os.path.join(save_dir, url.split('/')[-1])
@@ -165,11 +162,13 @@ if __name__ == "__main__":
     parser.add_argument("--url", type=str, required=True, help="The URL of the link file to download.")
     parser.add_argument("--config", type=str, help="The URL of the config file to download.")
     parser.add_argument("--pastebin", type=str, help="The URL of the pastebin.")
+    parser.add_argument("--hf-token", type=str, help="HuggingFace's Token if you download it from private repo for pastebin download.")
     
     args = parser.parse_args()
 
-    # Assign pastebin URL to a variable
+    # Assign variable
     pastebin_url = args.pastebin
+    hf_token     = args.hf-token
     
     # Step 1: Download the link file
     download_file_with_aria2(args.url)
