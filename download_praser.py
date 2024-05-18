@@ -1,12 +1,14 @@
 import os
 import subprocess
-from IPython.display import clear_output
 print("Loading program...")
 subprocess.run("pip install -q git+https://github.com/DEX-1101/colablib", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 subprocess.run("apt -y install -qq aria2", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+subprocess.run("pip install colorama", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 import argparse
 import time
 import torch
+import re
+import requests
 from colablib.utils import py_utils
 from pydantic import BaseModel
 from colablib.utils.py_utils import get_filename
@@ -14,6 +16,7 @@ from colablib.sd_models.downloader import aria2_download, download
 from colablib.colored_print import cprint, print_line
 from colablib.utils.config_utils import read_config
 from colablib.utils.git_utils import clone_repo
+from colorama import init, Fore, Back, Style
 
 torch_ver = torch.__version__
 cuda_ver = torch.version.cuda
@@ -191,18 +194,54 @@ def download_from_link_file(link_file_path):
         if url:  # Skip any blank lines
             download_file_with_aria2(url)
 
+
+############# TUNNELS #######################
+import cloudpickle as pickle
+try:
+    start_colab
+except:
+    start_colab = int(time.time())-5
+    
+def get_public_ip(version='ipv4'):
+    try:
+        url = f'https://api64.ipify.org?format=json&{version}=true'
+        response = requests.get(url)
+        data = response.json()
+        public_ip = data['ip']
+        return public_ip
+    except Exception as e:
+        print(f"Error getting public {version} address:", e)
+
+public_ipv4 = get_public_ip(version='ipv4')
+
+tunnel_class = pickle.load(open("new_tunnel", "rb"), encoding="utf-8")
+tunnel_port= 1101
+tunnel = tunnel_class(tunnel_port)
+tunnel.add_tunnel(command="cl tunnel --url localhost:{port}", name="cl", pattern=re.compile(r"[\w-]+\.trycloudflare\.com"))
+tunnel.add_tunnel(command="lt --port {port}", name="lt", pattern=re.compile(r"[\w-]+\.loca\.lt"), note="Password : " + Fore.GREEN + public_ipv4 + Style.RESET_ALL + " rerun cell if 404 error.")
+if zrok_token:
+    subprocess.run(f"zrok enable {zrok_token}", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    tunnel.add_tunnel(command="zrok share public http://localhost:{port}/ --headless", name="zrok", pattern=re.compile(r"[\w-]+\.share\.zrok\.io"))
+
+with tunnel:
+    !python -m http.server 1101
+############# TUNNELS #######################
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Ada indo coy !!!.")
     parser.add_argument("--req", type=str, required=True, help="Required file for notebook to run.")
     parser.add_argument("--config", type=str, help="The URL of your WebUI's config file if you want to import it.")
     parser.add_argument("--pastebin", type=str, help="Pastebin URL if you want to download model/lora/extensions.")
     parser.add_argument("--hf_token", type=str, help="HuggingFace's Token if you download it from private repo for Pastebin download.")
+    parser.add_argument("--zrok_token", type=str, help="HuggingFace's Token if you download it from private repo for Pastebin download.")
     
     args = parser.parse_args()
 
     # Assign variable
     pastebin_url = args.pastebin
-    hf_token = args.hf_token
+    hf_token     = args.hf_token
+    zrok_token   = args.zrok_token
     
     # Download the link file
     download_file_with_aria2(args.req)
@@ -220,9 +259,9 @@ if __name__ == "__main__":
     rudi = [
         ("apt-get update", "Updating library..."),
         ("apt-get install lz4", "lz4"),
-        ("pip install colorama", "colorama"),
+        #("", "colorama")
         ("npm install -g localtunnel", "localtunnel"),
-        ("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", "new_tunnel"),
+        #("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", "new_tunnel"),
         ("curl -s -Lo /usr/bin/cl https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /usr/bin/cl", "cloudflared"),
         (f"curl -sLO https://github.com/openziti/zrok/releases/download/v0.4.23/zrok_0.4.23_linux_amd64.tar.gz && tar -xzf zrok_0.4.23_linux_amd64.tar.gz && rm -rf zrok_0.4.23_linux_amd64.tar.gz && mv {ui}/zrok /usr/bin", "zrok"),
         (f"wget https://github.com/gutris1/segsmaker/raw/main/kaggle/script/pantat88.py -O {ui}/semvak_zeus.py", "semvak_zeus.py")
