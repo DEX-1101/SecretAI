@@ -240,9 +240,11 @@ if __name__ == "__main__":
     
     if 'content' in os.listdir('/'):
         agus.append(("pip install xformers==0.0.25 --no-deps", "Installing xformers..."))
+        agus.append(("", "Done"))
     elif 'kaggle' in os.listdir('/'):
         agus.append(("pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2 --extra-index-url https://download.pytorch.org/whl/cu121", "Installing torch..."))
         agus.append(("pip install xformers==0.0.23.post1 triton==2.1.0", "Installing xformers..."))
+        agus.append(("", "Done"))
     else:
         agus.append((""))
             
@@ -256,8 +258,8 @@ if __name__ == "__main__":
         si_kontol, kntl, command_time = kontolondon(oppai, asu, si_kontol, kntl)
         total_time += command_time
         
-    print_line(0)
-    cprint(f"[+] {kntl} of {si_kontol} error found. All completed within: {total_time:.2f} secs", color="flat_yellow")
+    #print_line(0)
+    #cprint(f"[+] {kntl} of {si_kontol} error found. All completed within: {total_time:.2f} secs", color="flat_yellow")
 
     if args.pastebin:
         start_time    = time.time()
