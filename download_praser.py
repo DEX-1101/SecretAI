@@ -1,5 +1,5 @@
 hf_token = ""
-
+os.system("pip install -q git+https://github.com/DEX-1101/colablib")
 #Code by Bang Furqanil
 import os
 import time
@@ -163,7 +163,6 @@ def download_from_link_file(link_file_path):
             download_file_with_aria2(url)
 
 if __name__ == "__main__":
-    os.system("pip install -q git+https://github.com/DEX-1101/colablib")
     parser = argparse.ArgumentParser(description="Download files from URLs.")
     parser.add_argument("--url", type=str, required=True, help="The URL of the link file to download.")
     parser.add_argument("--config", type=str, help="The URL of the config file to download.")
