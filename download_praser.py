@@ -110,7 +110,7 @@ def custom_download(custom_dirs):
         dst      = value.dst
 
         if value.url:
-            print_line(0, color="green")
+            print_line(0)
             cprint(f"[+] Downloading {key}.", color="flat_yellow")
 
         for url in urls:
