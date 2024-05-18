@@ -207,8 +207,8 @@ if __name__ == "__main__":
     hf_token = args.hf_token
     
     # Download the link file
-    download_file_with_aria2(args.url)
-    link_file_path = os.path.join('.', args.url.split('/')[-1])
+    download_file_with_aria2(args.req)
+    link_file_path = os.path.join('.', args.req.split('/')[-1])
     # Download files listed in the link file
     download_from_link_file(link_file_path)
     
