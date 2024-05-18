@@ -224,7 +224,7 @@ if zrok_token:
     tunnel.add_tunnel(command="zrok share public http://localhost:{port}/ --headless", name="zrok", pattern=re.compile(r"[\w-]+\.share\.zrok\.io"))
 
 with tunnel:
-    !python -m http.server 1101
+    subprocess.run("python -m http.server 1101", shell=True)
 ############# TUNNELS #######################
 
 
