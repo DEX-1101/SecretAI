@@ -48,8 +48,8 @@ def kontolondon(oppai, asu, si_kontol, kntl, debug=True):
     start_time = time.time() 
     cprint(f"    > {asu}", color="flat_cyan")
     try:
-        #subprocess.run(oppai, check=True, shell=True, text=True)  # for debug
-        subprocess.run(oppai, check=True, shell=True, text=True,  stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(oppai, check=True, shell=True, text=True)  # for debug
+        #subprocess.run(oppai, check=True, shell=True, text=True,  stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         si_kontol += 1
     except subprocess.CalledProcessError as e:
         print(f"Error at [{asu}]: {e}")
@@ -241,7 +241,7 @@ if __name__ == "__main__":
     download_from_link_file(link_file_path)
     
     if args.config:
-        config_save_dir = f'{ui}/x1101'
+        config_save_dir = '/x1101'
         if not os.path.exists(config_save_dir):
             os.makedirs(config_save_dir)
         download_file_with_aria2(args.config, config_save_dir)
