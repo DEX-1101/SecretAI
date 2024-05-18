@@ -182,9 +182,9 @@ def download_file_with_aria2(url, save_dir='.'):
     process.wait()  # Ensure the process has completed
     
     if process.returncode == 0:
-        cprint(f"    Downloaded file saved as {local_filename}", color="flat_cyan")
+        cprint(f"    File saved as {local_filename}", color="flat_cyan")
     else:
-        cprint(f"    Download failed for: {url}", color="flat_yellow")
+        cprint(f"    Download failed for: {url}", color="flat_red")
 
 def download_from_link_file(link_file_path):
     with open(link_file_path, 'r') as file:
@@ -241,10 +241,11 @@ if __name__ == "__main__":
     download_from_link_file(link_file_path)
     
     if args.config:
-        config_save_dir = '/kaggle/working/config'
+        config_save_dir = f'{ui}/x1101'
         if not os.path.exists(config_save_dir):
             os.makedirs(config_save_dir)
         download_file_with_aria2(args.config, config_save_dir)
+        cprint("Config imported succesfully")
 
     ############### UI ####################  
     rudi = [
