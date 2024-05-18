@@ -35,7 +35,7 @@ else:
      cprint('Error. Enviroment not detected', color="flat_red")
 
 print_line(0)
-cprint(f"[+] PyTorch Version :", torch_ver, "| Cuda :", cuda_ver, "| GPU Access :", is_gpu, "| Env :", env, color="flat_yellow")
+cprint(f"[+] PyTorch Version :", torch_ver, "| Cuda :", cuda_ver, "| GPU Access :", is_gpu, "| Env :", env, "|", color="flat_green")
 print_line(0)
 cprint("[+] Preparing Notebook", color="flat_yellow")
 
@@ -245,7 +245,7 @@ if __name__ == "__main__":
         if not os.path.exists(config_save_dir):
             os.makedirs(config_save_dir)
         download_file_with_aria2(args.config, config_save_dir)
-        cprint("Config imported succesfully")
+        cprint("    Config imported succesfully", color="flat_green")
 
     ############### UI ####################  
     rudi = [
