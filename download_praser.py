@@ -1,7 +1,11 @@
 hf_token = ""
 
 import os
-os.system("pip install -q git+https://github.com/DEX-1101/colablib &> /dev/null")
+import argparse
+import os
+import subprocess
+# Suppress all output
+subprocess.run("pip install -q git+https://github.com/DEX-1101/colablib", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 import time
 from colablib.utils import py_utils
 from pydantic import BaseModel
@@ -11,9 +15,7 @@ from colablib.colored_print import cprint, print_line
 from colablib.utils.config_utils import read_config
 from colablib.utils.git_utils import clone_repo
 
-import argparse
-import os
-import subprocess
+
 
 
 #============custom
