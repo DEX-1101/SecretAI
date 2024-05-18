@@ -1,9 +1,10 @@
 import argparse
+import os
 import requests
 from tqdm import tqdm
 
-def download_file(url):
-    local_filename = url.split('/')[-1]
+def download_file(url, save_dir='.'):
+    local_filename = os.path.join(save_dir, url.split('/')[-1])
 
     # Send a GET request to the URL with stream=True
     with requests.get(url, stream=True) as r:
@@ -20,9 +21,16 @@ def download_file(url):
     return local_filename
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Download a file from a URL.")
+    parser = argparse.ArgumentParser(description="Download files from URLs.")
     parser.add_argument("--url", type=str, required=True, help="The URL of the file to download.")
+    parser.add_argument("--config", type=str, help="The URL of the config file to download.")
     
     args = parser.parse_args()
     
     download_file(args.url)
+    
+    if args.config:
+        config_save_dir = '/kaggle/working/config'
+        if not os.path.exists(config_save_dir):
+            os.makedirs(config_save_dir)
+        download_file(args.config, config_save_dir)
