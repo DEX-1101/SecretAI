@@ -4,7 +4,7 @@ from IPython.display import clear_output
 print("Loading program...")
 subprocess.run("pip install -q git+https://github.com/DEX-1101/colablib", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 subprocess.run("apt -y install -qq aria2", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-clear_output()
+clear_output(wait=True)
 import argparse
 import time
 import torch
@@ -34,6 +34,7 @@ else:
 print_line(0)
 cprint(f"[+] PyTorch Version :", torch_ver, "| Cuda :", cuda_ver, "| GPU Access :", is_gpu, "| Env :", env, color="flat_green")
 print_line(0)
+cprint("[+] Preparing Notebook...", color="flat_yellow")
 
 ################# UI #################
 branch = "master"
@@ -174,9 +175,7 @@ def download_file_with_aria2(url, save_dir='.'):
     
     # Start the aria2c process
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    cprint("[+] Preparing Notebook...", color="flat_yellow")
-    print_line(0)
-    cprint(f"    Downloading {url}...", color="flat_cyan")
+    cprint(f"    Downloading {url}", color="flat_cyan")
     process.wait()  # Ensure the process has completed
     
     if process.returncode == 0:
