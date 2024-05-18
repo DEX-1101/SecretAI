@@ -6,7 +6,6 @@ subprocess.run("apt -y install -qq aria2", shell=True, stdout=subprocess.DEVNULL
 import argparse
 import time
 import torch
-import 
 from colablib.utils import py_utils
 from pydantic import BaseModel
 from colablib.utils.py_utils import get_filename
