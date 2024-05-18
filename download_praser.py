@@ -14,6 +14,9 @@ from colablib.colored_print import cprint, print_line
 from colablib.utils.config_utils import read_config
 from colablib.utils.git_utils import clone_repo
 
+torch_ver = torch.__version__
+cuda_ver = torch.version.cuda
+is_gpu = "Yes." if torch.cuda.is_available() else "GPU not detected."
 
 if 'content' in os.listdir('/'):
     root_path = "/content"
@@ -26,15 +29,14 @@ elif 'kaggle' in os.listdir('/'):
 else:
      cprint('Error. Enviroment not detected', color="flat_red")
 
+print_line(0)
+cprint(f"[+] PyTorch Version :", torch_ver, "| Cuda :", cuda_ver, "| GPU Access :", is_gpu, "| Env :", env, color="flat_green")
+print_line(0)
 
 ################# UI #################
 branch = "master"
 ui_path = os.path.join(ui, "x1101")
 git_path = os.path.join(ui_path, "extensions")
-
-torch_ver = torch.__version__
-cuda_ver = torch.version.cuda
-is_gpu = "Yes." if torch.cuda.is_available() else "GPU not detected."
 
 def kontolondon(oppai, asu, si_kontol, kntl, debug=True):   
     start_time = time.time() 
@@ -157,8 +159,8 @@ def custom_download_list(url):
 
 def download_file_with_aria2(url, save_dir='.'):
     local_filename = os.path.join(save_dir, url.split('/')[-1])
-    
-    # Build the aria2c command
+
+    # aria2c command
     command = [
         'aria2c',
         '--dir', save_dir,
@@ -170,13 +172,15 @@ def download_file_with_aria2(url, save_dir='.'):
     
     # Start the aria2c process
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    print(f"Downloading {url}...")
+    cprint("[+] Preparing Notebook...", color="flat_yellow")
+    print_line(0)
+    cprint(f"    Downloading {url}...", color="flat_cyan")
     process.wait()  # Ensure the process has completed
     
     if process.returncode == 0:
-        print(f"Downloaded file saved as {local_filename}")
+        cprint(f"    Downloaded file saved as {local_filename}", color="flat_cyan")
     else:
-        print(f"Download failed for: {url}")
+        cprint(f"    Download failed for: {url}", color="flat_yellow")
 
 def download_from_link_file(link_file_path):
     with open(link_file_path, 'r') as file:
@@ -212,10 +216,7 @@ if __name__ == "__main__":
             os.makedirs(config_save_dir)
         download_file_with_aria2(args.config, config_save_dir)
 
-    ############### UI ####################
-    cprint(f"[+] PyTorch Version :", torch_ver, "| Cuda :", cuda_ver, "| GPU Access :", is_gpu, color="flat_green")
-    print_line(0)
-    
+    ############### UI ####################  
     rudi = [
         ("apt-get update", "Updating library..."),
         ("apt-get install lz4", "lz4"),
@@ -249,7 +250,7 @@ if __name__ == "__main__":
     kntl = 0
     total_time = 0
     
-    cprint(f"[+] Installing [{env}] Requirements", color="flat_yellow")
+    cprint(f"[+] Installing Requirements", color="flat_yellow")
     for oppai, asu in rudi + yanto + agus:
         si_kontol, kntl, command_time = kontolondon(oppai, asu, si_kontol, kntl)
         total_time += command_time
