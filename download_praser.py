@@ -1,7 +1,7 @@
 hf_token = ""
 
 import os
-os.system("pip install -q git+https://github.com/DEX-1101/colablib")
+os.system("pip install -q git+https://github.com/DEX-1101/colablib &> /dev/null")
 import time
 from colablib.utils import py_utils
 from pydantic import BaseModel
