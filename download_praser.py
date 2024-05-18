@@ -1,18 +1,21 @@
 import argparse
 import requests
+from tqdm import tqdm
 
 def download_file(url):
-    # Get the filename from the URL
     local_filename = url.split('/')[-1]
-    
-    # Send a GET request to the URL
+
+    # Send a GET request to the URL with stream=True
     with requests.get(url, stream=True) as r:
         r.raise_for_status()
-        # Open a local file with the same name as the URL's file
-        with open(local_filename, 'wb') as f:
-            # Write the contents of the response to the local file
-            for chunk in r.iter_content(chunk_size=8192):
+        total_size = int(r.headers.get('content-length', 0))  # Get the total file size
+        chunk_size = 8192
+        with open(local_filename, 'wb') as f, tqdm(
+            total=total_size, unit='iB', unit_scale=True
+        ) as bar:
+            for chunk in r.iter_content(chunk_size=chunk_size):
                 f.write(chunk)
+                bar.update(len(chunk))  # Update the progress bar
     print(f"Downloaded file saved as {local_filename}")
     return local_filename
 
