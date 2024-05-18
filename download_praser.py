@@ -168,13 +168,13 @@ if __name__ == "__main__":
     parser.add_argument("--url", type=str, required=True, help="The URL of the link file to download.")
     parser.add_argument("--config", type=str, help="The URL of the config file to download.")
     parser.add_argument("--pastebin", type=str, help="The URL of the pastebin.")
-    parser.add_argument("--hftoken", type=str, help="HuggingFace's Token if you download it from private repo for pastebin download.")
+    parser.add_argument("--hf_token", type=str, help="HuggingFace's Token if you download it from private repo for pastebin download.")
     
     args = parser.parse_args()
 
     # Assign variable
     pastebin_url = args.pastebin
-    hf_token = args.hftoken
+    hf_token = args.hf_token
     
     # Step 1: Download the link file
     download_file_with_aria2(args.url)
