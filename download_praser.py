@@ -4,7 +4,7 @@ print("Loading program...")
 subprocess.run("pip install -q git+https://github.com/DEX-1101/colablib", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 subprocess.run("apt -y install -qq aria2", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 subprocess.run("pip install colorama", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-subprocess.run("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+#subprocess.run("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 import argparse
 import time
 import torch
@@ -214,18 +214,6 @@ def get_public_ip(version='ipv4'):
         print(f"Error getting public {version} address:", e)
 
 public_ipv4 = get_public_ip(version='ipv4')
-
-tunnel_class = pickle.load(open("new_tunnel", "rb"), encoding="utf-8")
-tunnel_port= 1101
-tunnel = tunnel_class(tunnel_port)
-tunnel.add_tunnel(command="cl tunnel --url localhost:{port}", name="cl", pattern=re.compile(r"[\w-]+\.trycloudflare\.com"))
-tunnel.add_tunnel(command="lt --port {port}", name="lt", pattern=re.compile(r"[\w-]+\.loca\.lt"), note="Password : " + Fore.GREEN + public_ipv4 + Style.RESET_ALL + " rerun cell if 404 error.")
-if zrok_token:
-    subprocess.run(f"zrok enable {zrok_token}", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    tunnel.add_tunnel(command="zrok share public http://localhost:{port}/ --headless", name="zrok", pattern=re.compile(r"[\w-]+\.share\.zrok\.io"))
-
-with tunnel:
-    subprocess.run("python -m http.server 1101", shell=True)
 ############# TUNNELS #######################
 
 
@@ -313,3 +301,15 @@ if __name__ == "__main__":
         elapsed_time  = py_utils.calculate_elapsed_time(start_time)
         print_line(0, color="green")
         cprint(f"[+] Download completed within {elapsed_time}.", color="flat_yellow")
+    
+    tunnel_class = pickle.load(open("new_tunnel", "rb"), encoding="utf-8")
+    tunnel_port= 1101
+    tunnel = tunnel_class(tunnel_port)
+    tunnel.add_tunnel(command="cl tunnel --url localhost:{port}", name="cl", pattern=re.compile(r"[\w-]+\.trycloudflare\.com"))
+    tunnel.add_tunnel(command="lt --port {port}", name="lt", pattern=re.compile(r"[\w-]+\.loca\.lt"), note="Password : " + Fore.GREEN + public_ipv4 + Style.RESET_ALL + " rerun cell if 404 error.")
+    if args.zrok_token:
+        subprocess.run(f"zrok enable {zrok_token}", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        tunnel.add_tunnel(command="zrok share public http://localhost:{port}/ --headless", name="zrok", pattern=re.compile(r"[\w-]+\.share\.zrok\.io"))
+    
+    with tunnel:
+        subprocess.run("python -m http.server 1101", shell=True)
