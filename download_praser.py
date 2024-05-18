@@ -38,9 +38,11 @@ download_list       = os.path.join(root_path, "download_list.txt")
 class CustomDirs(BaseModel):
     url: str
     dst: str
-    
-hf_token = args.hftoken
-user_header = f"Authorization: Bearer {hf_token}"
+
+#user_header = f"Authorization: Bearer {hf_token}"
+#use_header = headers['Authorization'] = 'Bearer hf_token'
+use_headers = {'Authorization': 'Bearer hf_token'}
+
 custom_dirs = {
     "model"       : CustomDirs(url=custom_model_url, dst=models_dir),
     "vae"         : CustomDirs(url=custom_vae_url, dst=vaes_dir),
