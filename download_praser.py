@@ -21,7 +21,7 @@ from colorama import init, Fore, Back, Style
 
 torch_ver = torch.__version__
 cuda_ver = torch.version.cuda
-gpu_status = f"GPU Name: {torch.cuda.get_device_name(torch.cuda.current_device())}" if torch.cuda.is_available() else "No GPU detected."
+gpu_status = f"{torch.cuda.get_device_name(torch.cuda.current_device())}" if torch.cuda.is_available() else "No GPU detected."
 
     
 
@@ -275,8 +275,8 @@ if __name__ == "__main__":
         agus.append(("pip install xformers==0.0.25 --no-deps", "Installing xformers..."))
         agus.append(("", "Done"))
     elif 'kaggle' in os.listdir('/'):
-        #agus.append(("pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2 --extra-index-url https://download.pytorch.org/whl/cu121", "Installing torch..."))
-        #agus.append(("pip install xformers==0.0.23.post1 triton==2.1.0", "Installing xformers..."))
+        agus.append(("pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2 --extra-index-url https://download.pytorch.org/whl/cu121", "Installing torch..."))
+        agus.append(("pip install xformers==0.0.23.post1 triton==2.1.0", "Installing xformers..."))
         agus.append(("", "Done"))
     else:
         agus.append((""))
@@ -321,5 +321,5 @@ if __name__ == "__main__":
         subprocess.run(f"echo -n {start_colab} >{ui}/x1101/static/colabTimer.txt", shell=True)
         lol = f"sed -i -e \"s/\\[\\\"sd_model_checkpoint\\\"\\]/\\[\\\"sd_model_checkpoint\\\",\\\"sd_vae\\\",\\\"CLIP_stop_at_last_layers\\\"\\]/g\" {ui}/x1101/modules/shared_options.py"
         subprocess.run(lol, shell=True)       
-        subprocess.run(f"cd {ui}/x1101 && python launch.py --port=1101 --ngrok {ngrok_token} --api --encrypt-pass= --xformers --theme dark --enable-insecure-extension-access --disable-console-progressbars --disable-safe-unpickle --no-half-vae", shell=True)
+        subprocess.run(f"cd {ui}/x1101 && python launch.py --port=1101 --ngrok {ngrok_token} --api --encrypt-pass=x1101 --xformers --theme dark --enable-insecure-extension-access --disable-console-progressbars --disable-safe-unpickle --no-half-vae", shell=True)
         
