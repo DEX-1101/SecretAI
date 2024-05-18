@@ -40,8 +40,8 @@ class CustomDirs(BaseModel):
     dst: str
 
 #user_header = f"Authorization: Bearer {hf_token}"
-#use_header = headers['Authorization'] = 'Bearer hf_token'
-user_header = {'Authorization': f'Bearer {hf_token}'}
+#user_header = headers['Authorization'] = 'Bearer hf_token'
+#user_header = {'Authorization': f'Bearer {hf_token}'}
 
 custom_dirs = {
     "model"       : CustomDirs(url=custom_model_url, dst=models_dir),
@@ -193,6 +193,7 @@ if __name__ == "__main__":
         start_time    = time.time()
         textfile_path = download_list
         if pastebin_url:
+            user_header = f"Authorization: Bearer {hf_token}"
             textfile_path = custom_download_list(pastebin_url)
         download_from_textfile(textfile_path)
         custom_download(custom_dirs)
