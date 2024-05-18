@@ -1,6 +1,6 @@
 import os
 import subprocess
-print("Loading file...")
+print("Loading program...")
 subprocess.run("pip install -q git+https://github.com/DEX-1101/colablib", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 subprocess.run("apt -y install -qq aria2", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 subprocess.run("pip install colorama", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -37,7 +37,7 @@ else:
 print_line(0)
 cprint(f"[+] PyTorch Version :", torch_ver, "| Cuda :", cuda_ver, "| GPU Access :", is_gpu, "| Env :", env, color="flat_yellow")
 print_line(0)
-cprint("[+] Preparing Notebook...", color="flat_yellow")
+cprint("[+] Preparing Notebook", color="flat_yellow")
 
 ################# UI #################
 branch = "master"
@@ -248,9 +248,7 @@ if __name__ == "__main__":
     rudi = [
         ("apt-get update", "Updating library..."),
         ("apt-get install lz4", "lz4"),
-        #("", "colorama")
         ("npm install -g localtunnel", "localtunnel"),
-        #("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", "new_tunnel"),
         ("curl -s -Lo /usr/bin/cl https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /usr/bin/cl", "cloudflared"),
         (f"curl -sLO https://github.com/openziti/zrok/releases/download/v0.4.23/zrok_0.4.23_linux_amd64.tar.gz && tar -xzf zrok_0.4.23_linux_amd64.tar.gz && rm -rf zrok_0.4.23_linux_amd64.tar.gz && mv {ui}/zrok /usr/bin", "zrok"),
         (f"wget https://github.com/gutris1/segsmaker/raw/main/kaggle/script/pantat88.py -O {ui}/semvak_zeus.py", "semvak_zeus.py")
@@ -297,11 +295,10 @@ if __name__ == "__main__":
             textfile_path = custom_download_list(pastebin_url)
         download_from_textfile(textfile_path)
         custom_download(custom_dirs)
-
         elapsed_time  = py_utils.calculate_elapsed_time(start_time)
-        print_line(0, color="green")
-        cprint(f"[+] Download completed within {elapsed_time}.", color="flat_yellow")
-    
+        
+    print_line(0)
+    cprint(f"[+] Starting WebUI...", color="flat_yellow")
     tunnel_class = pickle.load(open("new_tunnel", "rb"), encoding="utf-8")
     tunnel_port= 1101
     tunnel = tunnel_class(tunnel_port)
@@ -312,4 +309,11 @@ if __name__ == "__main__":
         tunnel.add_tunnel(command="zrok share public http://localhost:{port}/ --headless", name="zrok", pattern=re.compile(r"[\w-]+\.share\.zrok\.io"))
     
     with tunnel:
-        subprocess.run("python -m http.server 1101", shell=True)
+        #subprocess.run("python -m http.server 1101", shell=True)
+        subprocess.run(f"cd {ui}/x1101", shell=True)
+        subprocess.run(f"echo -n {start_colab} >{ui}/x1101/static/colabTimer.txt)
+        lol = f"sed -i -e \"s/\\[\\\"sd_model_checkpoint\\\"\\]/\\[\\\"sd_model_checkpoint\\\",\\\"sd_vae\\\",\\\"CLIP_stop_at_last_layers\\\"\\]/g\" {ui}/x1101/modules/shared_options.py"
+        subprocess.run(lol, shell=True)
+
+        subprocess.run("python launch.py --port=1101 --ngrok --api  --encrypt-pass= --xformers --theme dark --enable-insecure-extension-access --disable-console-progressbars --disable-safe-unpickle --no-half-vae", shell=True)
+        
