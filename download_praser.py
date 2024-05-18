@@ -61,7 +61,7 @@ def parse_urls(filename):
             key = line[1:].lower()
             result[key] = []
         else:
-            urls = [url.strip() for url in line.split(',') if url.strip() != ""]
+            urls = [url.strip() for url in line.split(',') if url.strip() != '']
             result[key].extend(urls)
     return result
 
