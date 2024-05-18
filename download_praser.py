@@ -229,10 +229,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Assign variable
-    pastebin_url = args.pastebin
-    hf_token     = args.hf_token
-    zrok_token   = args.zrok_token
-    ngrok_token  = args.ngrok_token
+    pastebin_url     = args.pastebin
+    hf_token         = args.hf_token
+    zrok_token       = args.zrok_token
+    ngrok_token      = args.ngrok_token
+    import_config    = args.config
     
     # Download the link file
     download_file_with_aria2(args.req)
@@ -240,12 +241,12 @@ if __name__ == "__main__":
     # Download files listed in the link file
     download_from_link_file(link_file_path)
     
-    if args.config:
-        config_save_dir = '/x1101'
-        if not os.path.exists(config_save_dir):
-            os.makedirs(config_save_dir)
-        download_file_with_aria2(args.config, config_save_dir)
-        cprint("    Config imported succesfully", color="flat_green")
+    #if args.config:
+        #config_save_dir = '/x1101'
+        #if not os.path.exists(config_save_dir):
+        #    os.makedirs(config_save_dir)
+        #download_file_with_aria2(args.config, config_save_dir)
+        #cprint("    Config imported succesfully", color="flat_green")
 
     ############### UI ####################  
     rudi = [
@@ -262,7 +263,7 @@ if __name__ == "__main__":
         (f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/x1101/UI/resolve/main/ui.tar.lz4 -o ui.tar.lz4 && tar -xI lz4 -f ui.tar.lz4 && mv {ui}/kaggle/working/x1101 {ui} && rm {ui}/ui.tar.lz4 && rm -rf {ui}/kaggle", "Installing UI..."),
         (f"cd {ui_path} && git reset --hard && git pull && git switch {branch} && git pull && git reset --hard", "Updating UI..."),
         (f"rm -rf {git_path}/* && cd {git_path} && git clone https://github.com/BlafKing/sd-civitai-browser-plus && git clone https://github.com/Mikubill/sd-webui-controlnet && git clone https://github.com/DominikDoom/a1111-sd-webui-tagcomplete && git clone https://github.com/DEX-1101/sd-encrypt-image && git clone https://github.com/DEX-1101/timer && git clone https://github.com/gutris1/sd-hub && git clone https://github.com/Bing-su/adetailer.git && git clone https://github.com/zanllp/sd-webui-infinite-image-browsing && git clone https://github.com/thomasasfk/sd-webui-aspect-ratio-helper && git clone https://github.com/hako-mikan/sd-webui-regional-prompter && git clone https://github.com/picobyte/stable-diffusion-webui-wd14-tagger && git clone https://github.com/Coyote-A/ultimate-upscale-for-automatic1111 && git clone https://github.com/Haoming02/sd-webui-tabs-extension", "Cloning Extensions..."),
-        
+        (f"wget -q {import_config} -O {ui}/config.json", "Config Imported"),
     ]
 
     agus = []
