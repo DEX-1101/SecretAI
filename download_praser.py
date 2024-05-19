@@ -293,7 +293,7 @@ if __name__ == "__main__":
 
     if args.debug:
         cprint("    Debug mode enabled", color="flat_red")
-    #    debug = False
+        show_output = True
     
     # Download the link file
     download_file_with_aria2(args.req)
