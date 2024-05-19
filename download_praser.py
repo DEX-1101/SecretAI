@@ -75,7 +75,7 @@ git_path = os.path.join(ui_path, "extensions")
 
 ui = "/kaggle/working"
 
-def run_subprocesses(commands, show_output=False):
+def run_subprocesses(commands, args.debug=False):
     processes = []
     for i, (command, message) in enumerate(commands):
         cprint(f"    {message}", color="flat_cyan")
@@ -84,7 +84,7 @@ def run_subprocesses(commands, show_output=False):
         process.wait()  # Wait for the process to complete
         stdout, stderr = process.communicate()
         output = stdout.decode() + stderr.decode()
-        if show_output:
+        if args.debug:
             print(output)  # Show all output for each process
         if process.returncode != 0:
             print(f"Subprocess {i+1} failed with error: {stderr.decode().strip()}")
