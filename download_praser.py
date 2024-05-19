@@ -310,10 +310,16 @@ if __name__ == "__main__":
 
     ################
     if args.config:
-        yanto.append((f"wget -q {import_config} -O {ui}/config.json", "Config imported"))
+        agus.append((f"wget -q {import_config} -O {ui}/config.json", "Config imported"))
+    else:
+        agus.append((""))
+    
     if args.hub_token:
-        yanto.append((f"mkdir -p {ui}/x1101 && wget -q {secret} -O {ui}/x1101/sd-hub-token.json", "HUB Token imported"))
-    ################
+        agus.append((f"mkdir -p {ui}/x1101 && wget -q {secret} -O {ui}/x1101/sd-hub-token.json", "HUB Token imported"))
+    else:
+        agus.append((""))
+    
+################
     
     si_kontol = 0
     kntl = 0
