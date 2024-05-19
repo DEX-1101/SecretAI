@@ -245,10 +245,6 @@ if __name__ == "__main__":
     link_file_path = os.path.join('.', args.req.split('/')[-1])
     # Download files listed in the link file
     download_from_link_file(link_file_path)
-    
-    if args.hub_token:
-        subprocess.run(f"mkdir -p {ui}/x1101 && wget -q {secret} -O {ui}/x1101/sd-hub-token.json", shell=True)
-        cprint("    HUB token imported.", color="flat_green")
 
     ############### UI ####################  
     rudi = [
@@ -290,7 +286,11 @@ if __name__ == "__main__":
         
     #print_line(0)
     #cprint(f"[+] {kntl} of {si_kontol} error found. All completed within: {total_time:.2f} secs", color="flat_yellow")
-
+    
+    if args.hub_token:
+        subprocess.run(f"mkdir -p {ui}/x1101 && wget -q {secret} -O {ui}/x1101/sd-hub-token.json", shell=True)
+        cprint("    HUB token imported.", color="flat_green")
+    
     if args.pastebin:
         start_time    = time.time()
         textfile_path = download_list
