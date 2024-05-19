@@ -1,13 +1,22 @@
 import os
 import subprocess
-print("Loading program...")
+import time
+import sys
+
+def progress_bar(duration):
+    for i in range(duration):
+        sys.stdout.write('+')
+        sys.stdout.flush()
+        time.sleep(1)
+    print()  # Move to the next line after the progress bar is complete
+progress_bar(10)
+
 if not os.path.exists("x1101"):
     subprocess.run("pip install -q git+https://github.com/DEX-1101/colablib", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run("apt -y install -qq aria2", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run("pip install colorama", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 #subprocess.run("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 import argparse
-import time
 import torch
 import re
 import requests
