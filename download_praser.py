@@ -106,12 +106,12 @@ commands = [
 ]
 
 if 'content' in os.listdir('/'):
-    agus.append(("pip install xformers==0.0.25 --no-deps", "Installing xformers..."))
-    agus.append(("", "Done"))
+    commands.append(("pip install xformers==0.0.25 --no-deps", "Installing xformers..."))
+    commands.append(("", "Done"))
 elif 'kaggle' in os.listdir('/'):
-    agus.append(("pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2 --extra-index-url https://download.pytorch.org/whl/cu121", "Installing torch..."))
-    agus.append(("pip install xformers==0.0.23.post1 triton==2.1.0", "Installing xformers..."))
-    agus.append(("", "Done"))
+    commands.append(("pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2 --extra-index-url https://download.pytorch.org/whl/cu121", "Installing torch..."))
+    commands.append(("pip install xformers==0.0.23.post1 triton==2.1.0", "Installing xformers..."))
+    commands.append(("", "Done"))
 
 ################# UI ##################
 
