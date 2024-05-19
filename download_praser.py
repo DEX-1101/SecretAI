@@ -73,13 +73,12 @@ branch = "master"
 ui_path = os.path.join(ui, "x1101")
 git_path = os.path.join(ui_path, "extensions")
 
-import subprocess
 ui = "/kaggle/working"
 
 def run_subprocesses(commands, show_output=False):
     processes = []
     for i, (command, message) in enumerate(commands):
-        print(f"{message}")
+        cprint(f"    {message}", color="flat_cyab")
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         processes.append((i, process))
         process.wait()  # Wait for the process to complete
@@ -89,9 +88,6 @@ def run_subprocesses(commands, show_output=False):
             print(output)  # Show all output for each process
         if process.returncode != 0:
             print(f"Subprocess {i+1} failed with error: {stderr.decode().strip()}")
-
-print_line(0)
-cprint(f"[+] Installing Requirements", color="flat_yellow")
 
 commands = [
     ("apt-get install -y aria2", "> Installing aria2"),
@@ -306,7 +302,9 @@ if __name__ == "__main__":
     download_from_link_file(link_file_path)
 
     ############### UI ####################  
-   
+
+    print_line(0)
+    cprint(f"[+] Installing Requirements", color="flat_yellow")
     run_subprocesses(commands)
     
     if args.config:
