@@ -26,7 +26,6 @@ def run_subprocesses():
     elif 'kaggle' in os.listdir('/') and not os.path.exists("x1101"):
         #subprocess.run("pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2 --extra-index-url https://download.pytorch.org/whl/cu121", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         #subprocess.run("pip install xformers==0.0.26.post1", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
     progress_done = True
 
 # Flag to indicate when the subprocesses are done
