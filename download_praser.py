@@ -269,6 +269,22 @@ def get_public_ip(version='ipv4'):
 public_ipv4 = get_public_ip(version='ipv4')
 ############# TUNNELS #######################
 
+def progress_bar1():
+    sys.stdout.write('Loading \033[31mx1101.py\033[0m [')
+    sys.stdout.flush()
+    while not progress_done1:
+        sys.stdout.write('\033[92m' + '■' + '\033[0m')
+        sys.stdout.flush()
+        time.sleep(1)
+    sys.stdout.write('][OK]')
+    sys.stdout.flush()
+    print() 
+    
+    print_line(0)
+    cprint(f"[+] Installing Requirements", color="flat_yellow")
+    if not os.path.exists("x1101"):
+        run_subprocesses1(commands)
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Ada indo coy !!!.")
     parser.add_argument("--req", type=str, help="Required file for notebook to run.")
@@ -303,33 +319,17 @@ if __name__ == "__main__":
 
     ############### UI ####################  
 
-def progress_bar1():
-    sys.stdout.write('Loading \033[31mx1101.py\033[0m [')
-    sys.stdout.flush()
-    while not progress_done1:
-        sys.stdout.write('\033[92m' + '■' + '\033[0m')
-        sys.stdout.flush()
-        time.sleep(1)
-    sys.stdout.write('][OK]')
-    sys.stdout.flush()
-    print() 
-    
-    print_line(0)
-    cprint(f"[+] Installing Requirements", color="flat_yellow")
-    if not os.path.exists("x1101"):
-        run_subprocesses1(commands)
-
-# Flag to indicate when the subprocesses are done
-progress_done1 = False
-progress_thread1 = Thread(target=progress_bar1)
-subprocess_thread1 = Thread(target=run_subprocesses1)
-    
-progress_thread1.start()
-subprocess_thread1.start()
-    
-# Wait for both threads to complete
-subprocess_thread1.join()
-progress_thread1.join()
+    # Flag to indicate when the subprocesses are done
+    progress_done1 = False
+    progress_thread1 = Thread(target=progress_bar1)
+    subprocess_thread1 = Thread(target=run_subprocesses1)
+        
+    progress_thread1.start()
+    subprocess_thread1.start()
+        
+    # Wait for both threads to complete
+    subprocess_thread1.join()
+    progress_thread1.join()
     
     if args.config:
         subprocess.run(f"wget -q {import_config} -O {ui}/config.json", shell=True)
