@@ -247,7 +247,7 @@ if __name__ == "__main__":
     download_from_link_file(link_file_path)
     
     if args.hub_token:
-        subprocess.run(f"wget -q {secret} -O {ui}/x1101/sd-hub-token.json", shell=True)
+        subprocess.run(f"mkdir -p {ui}/x1101 && wget -q {secret} -O {ui}/x1101/sd-hub-token.json", shell=True)
         cprint("    HUB token imported.", color="flat_green")
 
     ############### UI ####################  
