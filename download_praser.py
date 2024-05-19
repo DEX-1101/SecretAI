@@ -11,7 +11,7 @@ def progress_bar():
         sys.stdout.write('\033[92m' + '■' + '\033[0m')
         sys.stdout.flush()
         time.sleep(1)
-    sys.stdout.write('][OK]')
+    sys.stdout.write('][ok]')
     sys.stdout.flush()
     print() 
 
