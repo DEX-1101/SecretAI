@@ -84,6 +84,7 @@ def kontolondon(oppai, asu, si_kontol, kntl, debug=True):
     if not os.path.exists("x1101"):
         try:
             if args.debug:
+                cprint("    Debug mode enabled", color="flat_red")
                 subprocess.run(oppai, check=True, shell=True, text=True)  # for debug
             else:
                 subprocess.run(oppai, check=True, shell=True, text=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
