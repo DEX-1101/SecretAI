@@ -238,6 +238,7 @@ if __name__ == "__main__":
     zrok_token       = args.zrok_token
     ngrok_token      = args.ngrok_token
     import_config    = args.config
+    secret           = args.hub_token
     
     # Download the link file
     download_file_with_aria2(args.req)
@@ -246,10 +247,7 @@ if __name__ == "__main__":
     download_from_link_file(link_file_path)
     
     if args.hub_token:
-        config_save_dir = "./x1101"
-        if not os.path.exists(config_save_dir):
-            os.makedirs(config_save_dir)
-        download_file_with_aria2(args.hub_token, config_save_dir)
+        subproces.run(f"wget -q {secret} -O {ui}/x1101/sd-hub-token.json", shell=True)
         cprint("    HUB token imported.", color="flat_green")
 
     ############### UI ####################  
