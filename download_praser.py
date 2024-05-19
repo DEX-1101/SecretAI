@@ -23,7 +23,7 @@ def run_subprocesses():
         subprocess.run("pip install colorama", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     if 'content' in os.listdir('/'):
         subprocess.run("pip install xformers==0.0.25 --no-deps", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    if 'kaggle' in os.listdir('/'):
+    elif 'kaggle' in os.listdir('/'):
         subprocess.run("pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2 --extra-index-url https://download.pytorch.org/whl/cu121", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         subprocess.run("pip install xformers==0.0.23.post1 triton==2.1.0", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     progress_done = True
