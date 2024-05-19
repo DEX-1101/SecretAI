@@ -5,7 +5,7 @@ import subprocess
 from threading import Thread
 
 def progress_bar():
-    sys.stdout.write('Loading program [')
+    sys.stdout.write('Loading \033[31mx1101.py\033[0m [')
     sys.stdout.flush()
     while not progress_done:
         sys.stdout.write('\033[92m' + '■' + '\033[0m')
@@ -21,6 +21,8 @@ def run_subprocesses():
         subprocess.run("pip install -q git+https://github.com/DEX-1101/colablib", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         subprocess.run("apt -y install -qq aria2", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         subprocess.run("pip install colorama", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    if 'kaggle' in os.listdir('/'):
+        subprocess.run("pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2 --extra-index-url https://download.pytorch.org/whl/cu121", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     progress_done = True
 
 # Flag to indicate when the subprocesses are done
@@ -301,9 +303,6 @@ if __name__ == "__main__":
     link_file_path = os.path.join('.', args.req.split('/')[-1])
     # Download files listed in the link file
     download_from_link_file(link_file_path)
-    if 'kaggle' in os.listdir('/'):
-        cprint("    Installing Torch...")
-        subprocess.run(["pip", "install", "torch==2.1.2+cu121", "torchvision==0.16.2+cu121", "torchaudio==2.1.2", "--extra-index-url", "https://download.pytorch.org/whl/cu121"], shell=True)
 
     ############### UI ####################  
 
