@@ -80,7 +80,7 @@ ui = "/kaggle/working"
 def run_subprocesses(commands, show_output=False):
     processes = []
     for i, (command, message) in enumerate(commands):
-        cprint(f"    {message}", color="flat_cyan")
+        cprint(f"    > {message}", color="flat_cyan")
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         processes.append((i, process))
         process.wait()  # Wait for the process to complete
@@ -93,8 +93,8 @@ def run_subprocesses(commands, show_output=False):
             print(f"Subprocess {i+1} failed with error: {stderr.decode().strip()}")
 
 commands = [
-    ("apt-get install -y aria2", "> Installing aria2"),
-    ("npm install -g localtunnel", "> localtunnel"),
+    ("apt-get install -y aria2", "aria2"),
+    ("npm install -g localtunnel", "localtunnel"),
     ("apt-get install lz4", "lz4"),
     ("curl -s -Lo /usr/bin/cl https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /usr/bin/cl", "cloudflared"),
     (f"curl -sLO https://github.com/openziti/zrok/releases/download/v0.4.23/zrok_0.4.23_linux_amd64.tar.gz && tar -xzf zrok_0.4.23_linux_amd64.tar.gz && rm -rf zrok_0.4.23_linux_amd64.tar.gz && mv {ui}/zrok /usr/bin", "zrok"),
