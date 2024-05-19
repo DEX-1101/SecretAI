@@ -246,7 +246,7 @@ if __name__ == "__main__":
     download_from_link_file(link_file_path)
     
     if args.hub_token:
-        config_save_dir = "/x1101"
+        config_save_dir = "{ui}/x1101"
         if not os.path.exists(config_save_dir):
             os.makedirs(config_save_dir)
         download_file_with_aria2(args.hub_token, config_save_dir)
