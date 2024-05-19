@@ -11,7 +11,7 @@ def progress_bar():
         sys.stdout.write('\033[92m' + '■' + '\033[0m')
         sys.stdout.flush()
         time.sleep(1)
-    sys.stdout.write('] [ok]')
+    sys.stdout.write('][OK]')
     sys.stdout.flush()
     print() 
 
@@ -24,9 +24,9 @@ def run_subprocesses():
     if 'content' in os.listdir('/') and not os.path.exists("x1101"):
         subprocess.run("pip install xformers==0.0.25 --no-deps", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     elif 'kaggle' in os.listdir('/') and not os.path.exists("x1101"):
-        print("a")
         #subprocess.run("pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2 --extra-index-url https://download.pytorch.org/whl/cu121", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        #subprocess.run("pip install xformers==0.0.26.post1", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run("pip install xformers==0.0.26.post1", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
     progress_done = True
 
 # Flag to indicate when the subprocesses are done
@@ -81,11 +81,10 @@ git_path = os.path.join(ui_path, "extensions")
 
 ui = "/kaggle/working"
 
-def run_subprocesses1(commands, show_output=False):
-    global progress_done1
+def run_subprocesses(commands, show_output=False):
     processes = []
     for i, (command, message) in enumerate(commands):
-        #cprint(f"    > {message}", color="flat_cyan")
+        cprint(f"    > {message}", color="flat_cyan")
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         processes.append((i, process))
         process.wait()  # Wait for the process to complete
@@ -96,7 +95,6 @@ def run_subprocesses1(commands, show_output=False):
             print(output)  # Show all output for each process
         if process.returncode != 0:
             print(f"Subprocess {i+1} failed with error: {stderr.decode().strip()}")
-    progress_done = True
 
 commands = [
     ("apt-get install -y aria2", "aria2"),
@@ -269,17 +267,6 @@ def get_public_ip(version='ipv4'):
 public_ipv4 = get_public_ip(version='ipv4')
 ############# TUNNELS #######################
 
-def progress_bar1():
-    sys.stdout.write('Loading \033[31mx1101.py\033[0m [')
-    sys.stdout.flush()
-    while not progress_done1:
-        sys.stdout.write('\033[92m' + '■' + '\033[0m')
-        sys.stdout.flush()
-        time.sleep(1)
-    sys.stdout.write('][OK]')
-    sys.stdout.flush()
-    print() 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Ada indo coy !!!.")
     parser.add_argument("--req", type=str, help="Required file for notebook to run.")
@@ -312,24 +299,12 @@ if __name__ == "__main__":
     # Download files listed in the link file
     download_from_link_file(link_file_path)
 
+    ############### UI ####################  
+
     print_line(0)
     cprint(f"[+] Installing Requirements", color="flat_yellow")
     if not os.path.exists("x1101"):
-        run_subprocesses1(commands)
-
-    ############### UI ####################  
-
-    # Flag to indicate when the subprocesses are done
-    progress_done1 = False
-    progress_thread1 = Thread(target=progress_bar1)
-    subprocess_thread1 = Thread(target=run_subprocesses1)
-        
-    progress_thread1.start()
-    subprocess_thread1.start()
-        
-    # Wait for both threads to complete
-    subprocess_thread1.join()
-    progress_thread1.join()
+        run_subprocesses(commands)
     
     if args.config:
         subprocess.run(f"wget -q {import_config} -O {ui}/config.json", shell=True)
