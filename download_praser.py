@@ -8,12 +8,12 @@ def progress_bar():
     sys.stdout.write('Loading program [')
     sys.stdout.flush()
     while not progress_done:
-        sys.stdout.write('\033[92m' + '■' + '\033[0m')  # ANSI escape code for green color
+        sys.stdout.write('\033[92m' + '■' + '\033[0m')
         sys.stdout.flush()
         time.sleep(1)
     sys.stdout.write(']')
     sys.stdout.flush()
-    print()  # Move to the next line after the progress bar is complete
+    print() 
 
 def run_subprocesses():
     global progress_done
@@ -25,12 +25,9 @@ def run_subprocesses():
 
 # Flag to indicate when the subprocesses are done
 progress_done = False
-
-# Create threads for progress bar and subprocess execution
 progress_thread = Thread(target=progress_bar)
 subprocess_thread = Thread(target=run_subprocesses)
 
-# Start the threads
 progress_thread.start()
 subprocess_thread.start()
 
@@ -54,8 +51,6 @@ from colorama import init, Fore, Back, Style
 torch_ver = torch.__version__
 cuda_ver = torch.version.cuda
 gpu_status = f"{torch.cuda.get_device_name(torch.cuda.current_device())}" if torch.cuda.is_available() else "No GPU detected."
-
-    
 
 if 'content' in os.listdir('/'):
     root_path = "/content"
@@ -84,7 +79,6 @@ def kontolondon(oppai, asu, si_kontol, kntl, debug=True):
     if not os.path.exists("x1101"):
         try:
             if args.debug:
-                #cprint("    Debug mode enabled", color="flat_red")
                 subprocess.run(oppai, check=True, shell=True, text=True)  # for debug
             else:
                 subprocess.run(oppai, check=True, shell=True, text=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -255,7 +249,6 @@ def get_public_ip(version='ipv4'):
 public_ipv4 = get_public_ip(version='ipv4')
 ############# TUNNELS #######################
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Ada indo coy !!!.")
     parser.add_argument("--req", type=str, help="Required file for notebook to run.")
@@ -269,7 +262,7 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
 
-    # Assign variable
+    # variable
     args.req = "https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/req.txt"
     pastebin_url     = args.pastebin
     hf_token         = args.hf_token
@@ -295,11 +288,9 @@ if __name__ == "__main__":
         ("npm install -g localtunnel", "localtunnel"),
         ("curl -s -Lo /usr/bin/cl https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /usr/bin/cl", "cloudflared"),
         (f"curl -sLO https://github.com/openziti/zrok/releases/download/v0.4.23/zrok_0.4.23_linux_amd64.tar.gz && tar -xzf zrok_0.4.23_linux_amd64.tar.gz && rm -rf zrok_0.4.23_linux_amd64.tar.gz && mv {ui}/zrok /usr/bin", "zrok"),
-        #(f"wget  -O {ui}/semvak_zeus.py", "semvak_zeus.py")
     ]
 
     yanto = [
-        #(f"wget https://raw.githubusercontent.com/DEX-1101/SecretNAI/main/template.txt -O {ui}/download_list.txt", "download_list.txt"),
         (f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/x1101/UI/resolve/main/ui.tar.lz4 -o ui.tar.lz4 && tar -xI lz4 -f ui.tar.lz4 && mv -f {ui}/kaggle/working/x1101 {ui} && rm {ui}/ui.tar.lz4 && rm -rf {ui}/kaggle", "Installing UI..."),
         (f"cd {ui_path} && git reset --hard && git pull && git switch {branch} && git pull && git reset --hard", "Updating UI..."),
         (f"rm -rf {git_path}/* && cd {git_path} && git clone https://github.com/BlafKing/sd-civitai-browser-plus && git clone https://github.com/Mikubill/sd-webui-controlnet && git clone https://github.com/DominikDoom/a1111-sd-webui-tagcomplete && git clone https://github.com/DEX-1101/sd-encrypt-image && git clone https://github.com/DEX-1101/timer && git clone https://github.com/gutris1/sd-hub && git clone https://github.com/Bing-su/adetailer.git && git clone https://github.com/zanllp/sd-webui-infinite-image-browsing && git clone https://github.com/thomasasfk/sd-webui-aspect-ratio-helper && git clone https://github.com/hako-mikan/sd-webui-regional-prompter && git clone https://github.com/picobyte/stable-diffusion-webui-wd14-tagger && git clone https://github.com/Coyote-A/ultimate-upscale-for-automatic1111 && git clone https://github.com/Haoming02/sd-webui-tabs-extension", "Cloning Extensions..."),
@@ -311,8 +302,8 @@ if __name__ == "__main__":
         agus.append(("pip install xformers==0.0.25 --no-deps", "Installing xformers..."))
         agus.append(("", "Done"))
     elif 'kaggle' in os.listdir('/'):
-        #agus.append(("pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2 --extra-index-url https://download.pytorch.org/whl/cu121", "Installing torch..."))
-        #agus.append(("pip install xformers==0.0.23.post1 triton==2.1.0", "Installing xformers..."))
+        agus.append(("pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2 --extra-index-url https://download.pytorch.org/whl/cu121", "Installing torch..."))
+        agus.append(("pip install xformers==0.0.23.post1 triton==2.1.0", "Installing xformers..."))
         agus.append(("", "Done"))
     else:
         agus.append((""))
