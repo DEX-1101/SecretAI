@@ -279,11 +279,6 @@ def progress_bar1():
     sys.stdout.write('][OK]')
     sys.stdout.flush()
     print() 
-    
-    print_line(0)
-    cprint(f"[+] Installing Requirements", color="flat_yellow")
-    if not os.path.exists("x1101"):
-        run_subprocesses1(commands)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Ada indo coy !!!.")
@@ -316,6 +311,11 @@ if __name__ == "__main__":
     link_file_path = os.path.join('.', args.req.split('/')[-1])
     # Download files listed in the link file
     download_from_link_file(link_file_path)
+
+    print_line(0)
+    cprint(f"[+] Installing Requirements", color="flat_yellow")
+    if not os.path.exists("x1101"):
+        run_subprocesses1(commands)
 
     ############### UI ####################  
 
