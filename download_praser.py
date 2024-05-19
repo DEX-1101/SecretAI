@@ -307,9 +307,9 @@ def progress_bar1():
     sys.stdout.write('Loading \033[31mx1101.py\033[0m [')
     sys.stdout.flush()
     while not progress_done1:
-         sys.stdout.write('\033[92m' + '■' + '\033[0m')
-           sys.stdout.flush()
-           time.sleep(1)
+        sys.stdout.write('\033[92m' + '■' + '\033[0m')
+        sys.stdout.flush()
+        time.sleep(1)
     sys.stdout.write('][OK]')
     sys.stdout.flush()
     print() 
