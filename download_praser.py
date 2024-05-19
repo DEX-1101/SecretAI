@@ -245,10 +245,6 @@ if __name__ == "__main__":
     link_file_path = os.path.join('.', args.req.split('/')[-1])
     # Download files listed in the link file
     download_from_link_file(link_file_path)
-    
-    if args.hub_token:
-        subprocess.run(f"mkdir -p {ui}/x1101 && wget -q {secret} -O {ui}/x1101/sd-hub-token.json", shell=True)
-        cprint("    HUB token imported.", color="flat_green")
 
     ############### UI ####################  
     rudi = [
@@ -265,7 +261,6 @@ if __name__ == "__main__":
         (f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/x1101/UI/resolve/main/ui.tar.lz4 -o ui.tar.lz4 && tar -xI lz4 -f ui.tar.lz4 && mv -f {ui}/kaggle/working/x1101 {ui} && rm {ui}/ui.tar.lz4 && rm -rf {ui}/kaggle", "Installing UI..."),
         (f"cd {ui_path} && git reset --hard && git pull && git switch {branch} && git pull && git reset --hard", "Updating UI..."),
         (f"rm -rf {git_path}/* && cd {git_path} && git clone https://github.com/BlafKing/sd-civitai-browser-plus && git clone https://github.com/Mikubill/sd-webui-controlnet && git clone https://github.com/DominikDoom/a1111-sd-webui-tagcomplete && git clone https://github.com/DEX-1101/sd-encrypt-image && git clone https://github.com/DEX-1101/timer && git clone https://github.com/gutris1/sd-hub && git clone https://github.com/Bing-su/adetailer.git && git clone https://github.com/zanllp/sd-webui-infinite-image-browsing && git clone https://github.com/thomasasfk/sd-webui-aspect-ratio-helper && git clone https://github.com/hako-mikan/sd-webui-regional-prompter && git clone https://github.com/picobyte/stable-diffusion-webui-wd14-tagger && git clone https://github.com/Coyote-A/ultimate-upscale-for-automatic1111 && git clone https://github.com/Haoming02/sd-webui-tabs-extension", "Cloning Extensions..."),
-        (f"wget -q {import_config} -O {ui}/config.json", "Config Imported"),
     ]
 
     agus = []
@@ -279,7 +274,14 @@ if __name__ == "__main__":
         agus.append(("", "Done"))
     else:
         agus.append((""))
-            
+
+    ################
+    if args.config:
+        yanto.append((f"wget -q {import_config} -O {ui}/config.json", "Config imported"))
+    if args.hub_token:
+        yanto.append((f"mkdir -p {ui}/x1101 && wget -q {secret} -O {ui}/x1101/sd-hub-token.json", "HUB Token imported"))
+    ################
+    
     si_kontol = 0
     kntl = 0
     total_time = 0
