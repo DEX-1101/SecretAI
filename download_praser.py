@@ -1,9 +1,11 @@
+debug = True
 import os
 import subprocess
 print("Loading program...")
-subprocess.run("pip install -q git+https://github.com/DEX-1101/colablib", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-subprocess.run("apt -y install -qq aria2", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-subprocess.run("pip install colorama", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+if not os.path.exists("x1101"):
+    subprocess.run("pip install -q git+https://github.com/DEX-1101/colablib", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run("apt -y install -qq aria2", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run("pip install colorama", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 #subprocess.run("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 import argparse
 import time
@@ -49,15 +51,19 @@ git_path = os.path.join(ui_path, "extensions")
 def kontolondon(oppai, asu, si_kontol, kntl, debug=True):   
     start_time = time.time() 
     cprint(f"    > {asu}", color="flat_cyan")
-    try:
-        #subprocess.run(oppai, check=True, shell=True, text=True)  # for debug
-        subprocess.run(oppai, check=True, shell=True, text=True,  stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        si_kontol += 1
-    except subprocess.CalledProcessError as e:
-        print(f"Error at [{asu}]: {e}")
-        kntl += 1
+    if not os.path.exists("x1101"):
+        try:
+            if debug:
+                subprocess.run(oppai, check=True, shell=True, text=True)  # for debug
+            else:
+                subprocess.run(oppai, check=True, shell=True, text=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            si_kontol += 1
+        except subprocess.CalledProcessError as e:
+            print(f"Error at [{asu}]: {e}")
+            kntl += 1
     end_time = time.time()
     return si_kontol, kntl, end_time - start_time
+
 ################# UI ##################
 
 ################# PASTEBIN DL #################
