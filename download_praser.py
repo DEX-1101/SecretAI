@@ -301,6 +301,9 @@ if __name__ == "__main__":
     link_file_path = os.path.join('.', args.req.split('/')[-1])
     # Download files listed in the link file
     download_from_link_file(link_file_path)
+    if 'kaggle' in os.listdir('/'):
+    cprint("    Installing Torch...")
+    subprocess.run(["pip", "install", "torch==2.1.2+cu121", "torchvision==0.16.2+cu121", "torchaudio==2.1.2", "--extra-index-url", "https://download.pytorch.org/whl/cu121"], shell=True)
 
     ############### UI ####################  
 
