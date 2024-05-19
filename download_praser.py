@@ -317,7 +317,7 @@ def progress_bar1():
     print_line(0)
     cprint(f"[+] Installing Requirements", color="flat_yellow")
     if not os.path.exists("x1101"):
-        run_subprocesses(commands)
+        run_subprocesses1(commands)
 
 # Flag to indicate when the subprocesses are done
 progress_done1 = False
