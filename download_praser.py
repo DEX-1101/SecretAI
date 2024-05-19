@@ -11,7 +11,7 @@ def progress_bar():
         sys.stdout.write('\033[92m' + '■' + '\033[0m')
         sys.stdout.flush()
         time.sleep(1)
-    sys.stdout.write('] \033[92mok\033[0m')
+    sys.stdout.write('] \033[92[mok]\033[0m')
     sys.stdout.flush()
     print() 
 
@@ -303,7 +303,8 @@ if __name__ == "__main__":
 
     print_line(0)
     cprint(f"[+] Installing Requirements", color="flat_yellow")
-    run_subprocesses(commands)
+    if not os.path.exists("x1101"):
+        run_subprocesses(commands)
     
     if args.config:
         subprocess.run(f"wget -q {import_config} -O {ui}/config.json", shell=True)
