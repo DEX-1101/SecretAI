@@ -83,7 +83,7 @@ def kontolondon(oppai, asu, si_kontol, kntl, debug=True):
     cprint(f"    > {asu}", color="flat_cyan")
     if not os.path.exists("x1101"):
         try:
-            if debug:
+            if args.debug:
                 subprocess.run(oppai, check=True, shell=True, text=True)  # for debug
             else:
                 subprocess.run(oppai, check=True, shell=True, text=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -277,9 +277,9 @@ if __name__ == "__main__":
     import_config    = args.config
     secret           = args.hub_token
 
-    if args.debug:
-        cprint("    Debug mode enabled", color="flat_red")
-        debug = False
+    #if args.debug:
+    #    cprint("    Debug mode enabled", color="flat_red")
+    #    debug = False
     
     # Download the link file
     download_file_with_aria2(args.req)
