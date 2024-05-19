@@ -319,17 +319,17 @@ if __name__ == "__main__":
     if not os.path.exists("x1101"):
         run_subprocesses(commands)
 
-# Flag to indicate when the subprocesses are done
-progress_done1 = False
-progress_thread1 = Thread(target=progress_bar1)
-subprocess_thread1 = Thread(target=run_subprocesses1)
-
-progress_thread1.start()
-subprocess_thread1.start()
-
-# Wait for both threads to complete
-subprocess_thread1.join()
-progress_thread1.join()
+    # Flag to indicate when the subprocesses are done
+    progress_done1 = False
+    progress_thread1 = Thread(target=progress_bar1)
+    subprocess_thread1 = Thread(target=run_subprocesses1)
+    
+    progress_thread1.start()
+    subprocess_thread1.start()
+    
+    # Wait for both threads to complete
+    subprocess_thread1.join()
+    progress_thread1.join()
 
     
     if args.config:
