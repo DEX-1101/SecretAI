@@ -5,7 +5,7 @@ import subprocess
 from threading import Thread
 
 def progress_bar():
-    sys.stdout.write('loading program [')
+    sys.stdout.write('\033[92m' + 'Loading program [' + '\033[0m')
     sys.stdout.flush()
     while not progress_done:
         sys.stdout.write('\033[92m' + '■' + '\033[0m')  # ANSI escape code for green color
