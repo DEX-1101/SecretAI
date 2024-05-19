@@ -1,21 +1,43 @@
-import os
-import subprocess
 import time
 import sys
+import os
+import subprocess
+from threading import Thread
 
-def progress_bar(duration):
-    for i in range(duration):
-        sys.stdout.write('+')
+def progress_bar():
+    sys.stdout.write('loading program [')
+    sys.stdout.flush()
+    while not progress_done:
+        sys.stdout.write('\033[92m' + '■' + '\033[0m')  # ANSI escape code for green color
         sys.stdout.flush()
         time.sleep(1)
+    sys.stdout.write(']')
+    sys.stdout.flush()
     print()  # Move to the next line after the progress bar is complete
-progress_bar(15)
 
-if not os.path.exists("x1101"):
-    subprocess.run("pip install -q git+https://github.com/DEX-1101/colablib", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run("apt -y install -qq aria2", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run("pip install colorama", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-#subprocess.run("curl -s -OL https://github.com/DEX-1101/sd-webui-notebook/raw/main/res/new_tunnel", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+def run_subprocesses():
+    global progress_done
+    if not os.path.exists("x1101"):
+        subprocess.run("pip install -q git+https://github.com/DEX-1101/colablib", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run("apt -y install -qq aria2", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run("pip install colorama", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    progress_done = True
+
+# Flag to indicate when the subprocesses are done
+progress_done = False
+
+# Create threads for progress bar and subprocess execution
+progress_thread = Thread(target=progress_bar)
+subprocess_thread = Thread(target=run_subprocesses)
+
+# Start the threads
+progress_thread.start()
+subprocess_thread.start()
+
+# Wait for both threads to complete
+subprocess_thread.join()
+progress_thread.join()
+
 import argparse
 import torch
 import re
