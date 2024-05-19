@@ -106,7 +106,7 @@ if 'content' in os.listdir('/'):
     commands.append(("pip install xformers==0.0.25 --no-deps", "Installing xformers..."))
     commands.append(("", "Done"))
 elif 'kaggle' in os.listdir('/'):
-    #commands.append(("pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2 --extra-index-url https://download.pytorch.org/whl/cu121", "Installing torch..."))
+    subprocess.run(["pip", "install", "torch==2.1.2+cu121", "torchvision==0.16.2+cu121", "torchaudio==2.1.2", "--extra-index-url", "https://download.pytorch.org/whl/cu121"], check=True, text=True, capture_output=True)
     commands.append(("pip install xformers==0.0.23.post1 triton==2.1.0 && pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2 --extra-index-url https://download.pytorch.org/whl/cu121", "Installing xformersP..."))
     commands.append(("", "Done"))
 
