@@ -307,17 +307,6 @@ if __name__ == "__main__":
         agus.append(("", "Done"))
     else:
         agus.append((""))
-
-    ################
-    if args.config:
-        agus.append((f"wget -q {import_config} -O {ui}/config.json", "Config imported"))
-    else:
-        agus.append((""))
-    
-    if args.hub_token:
-        agus.append((f"mkdir -p {ui}/x1101 && wget -q {secret} -O {ui}/x1101/sd-hub-token.json", "HUB Token imported"))
-    else:
-        agus.append((""))
     
 ################
     
@@ -334,6 +323,12 @@ if __name__ == "__main__":
     #print_line(0)
     #cprint(f"[+] {kntl} of {si_kontol} error found. All completed within: {total_time:.2f} secs", color="flat_yellow")
 
+    if args.config:
+        subprocess.run(f"wget -q {import_config} -O {ui}/config.json", shell=True)
+    
+    if args.hub_token:
+        subprocess.run(f"mkdir -p {ui}/x1101 && wget -q {secret} -O {ui}/x1101/sd-hub-token.json", shell=True)
+    
     if args.pastebin:
         start_time    = time.time()
         textfile_path = download_list
