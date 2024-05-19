@@ -78,7 +78,7 @@ ui = "/kaggle/working"
 def run_subprocesses(commands, show_output=False):
     processes = []
     for i, (command, message) in enumerate(commands):
-        cprint(f"    {message}", color="flat_cyab")
+        cprint(f"    {message}", color="flat_cyan")
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         processes.append((i, process))
         process.wait()  # Wait for the process to complete
