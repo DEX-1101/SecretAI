@@ -9,7 +9,7 @@ def progress_bar(duration):
         sys.stdout.flush()
         time.sleep(1)
     print()  # Move to the next line after the progress bar is complete
-progress_bar(10)
+progress_bar(15)
 
 if not os.path.exists("x1101"):
     subprocess.run("pip install -q git+https://github.com/DEX-1101/colablib", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
